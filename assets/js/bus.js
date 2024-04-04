@@ -63,7 +63,7 @@ function buildBusDeparture(busArray) {
     busContainer.innerHTML = '';
 
     const currentTime = new Date();
-    let html = '';
+    let busContainerElement = '';
 
     busArray.forEach((departure) => {
         const departureTime = new Date(departure.date + " " + departure.time);
@@ -79,19 +79,21 @@ function buildBusDeparture(busArray) {
             }
             timeString += `${minutes} minut${minutes > 1 ? 'ter' : ''}`;
 
-            html += `
+            busContainerElement += `
                 <span>
                     <header>
-                        <h3>Linje: ${departure.line}</h3>
-                        <h3>Stop: ${departure.stop}</h3>
-                        <h3>Afgang: ${timeString}</h3>
+                        <hgroup>
+                            <h3>Linje: ${departure.line}</h3>
+                            <h3>Stop: ${departure.stop}</h3>
+                            <h3>Afgang: ${timeString}</h3>
+                        </hgroup>
                     </header>
                 </span>`; 
         }
     });
 
     // Append constructed HTML to busContainer
-    busContainer.innerHTML = html;
+    busContainer.innerHTML = busContainerElement;
 
     // Assuming app is the parent container where busContainer should be appended
     app.appendChild(busContainer);
