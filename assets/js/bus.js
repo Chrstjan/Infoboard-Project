@@ -51,7 +51,10 @@ function recivedBusdata(busData) {
     // Filter out departures without timeString
     const filteredDepartures = busDeparture.filter(departure => departure.timeString !== undefined);
 
-    buildBusDeparture(filteredDepartures); // Send the filtered departures to buildBusDeparture
+    //Only send the first five bus departures
+    const firstFiveDepartures = filteredDepartures.splice(0, 5);
+
+    buildBusDeparture(firstFiveDepartures); // Send the filtered departures to buildBusDeparture
 }
 
 
@@ -83,7 +86,7 @@ function buildBusDeparture(busArray) {
                         <h3>Stop: ${departure.stop}</h3>
                         <h3>Afgang: ${timeString}</h3>
                     </header>
-                </span>`;
+                </span>`; 
         }
     });
 
