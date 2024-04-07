@@ -60,9 +60,24 @@ function recivedActivityData(activity) {
     activity.StartDate = formattedTime;
     return activity;
   });
-  infoboardView(formattedActivities);
+  classScheduleView(formattedActivities);
 }
 
-function infoboardView(classActivity) {
-  console.log(classActivity);
+function classScheduleView(classActivity) {
+  const activityDivContainer = document.createElement("div");
+  activityDivContainer.classList.add("activity-container"); // Corrected the variable name
+  let activityElements = ""; // Accumulate HTML string outside the loop
+  classActivity.forEach((activity) => {
+    activityElements += `
+        <span>
+            <hgroup>
+                <h2>${activity.Room}</h2>
+                <h2>${activity.Team}</h2>
+                <h2>${activity.Subject}</h2>
+                <h2>${activity.StartDate}</h2>
+            </hgroup>
+        </span>`;
+  });
+  activityDivContainer.innerHTML = activityElements;
+  activityContainer.appendChild(activityDivContainer);
 }
