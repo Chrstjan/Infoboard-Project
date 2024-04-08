@@ -8,9 +8,9 @@ const nextFetchTime = new Date(
   now.getFullYear(),
   now.getMonth(),
   now.getDate(), // Today's date
-  // 8,
-  // 15, 
-  // 0 
+  7,
+  0, 
+  0 
 );
 // If it's already past 8:15 AM, move to the next day
 if (now > nextFetchTime) {
@@ -18,7 +18,7 @@ if (now > nextFetchTime) {
 }
 const timeUntilNextFetch = nextFetchTime - now;
 
-// Set interval to fetch data every day at 8:15 AM
+// Set interval to fetch data every day at 7:00 AM
 setInterval(() => {
   getActivityData();
 }, timeUntilNextFetch);
@@ -58,6 +58,7 @@ function recivedActivityData(activity) {
     const dateString = activityPlan.StartDate;
     const activityDate = new Date(dateString);
     const activityDay = activityDate.getDay();
+    //This makes sure that it goes from sunday to monday
     const adjustedActivityDay = activityDay === 0 ? 6 : activityDay - 1;
     // console.log("Activity Day:", adjustedActivityDay);
     return adjustedActivityDay === currentDay;
