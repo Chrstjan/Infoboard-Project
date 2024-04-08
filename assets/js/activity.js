@@ -4,9 +4,12 @@ const activityContainer = document.getElementById("activityContainer");
 // Fetch data initially
 getActivityData();
 
-// Fetch data every day at 7:00 am
-setInterval(() => {
-  // Calculate the time until the next 7:00 am
+// Fetch data every 30 minutes
+setInterval(getActivityData, 30 * 60 * 1000); // Repeat every 30 minutes
+
+// Function to fetch data every day at 7:00 AM
+function fetchDailyDataAtSeven() {
+  // Calculate the time until the next 7:00 AM
   const currentTime = new Date();
   const nextNewDay = new Date(currentTime);
   nextNewDay.setHours(7, 0, 0, 0); // Sets the fetch time to 7:00 am
@@ -18,13 +21,17 @@ setInterval(() => {
   // Fetch data after the calculated time until next day
   setTimeout(() => {
     getActivityData();
-    // Call setInterval again to repeat the process
+    // Call setInterval again to repeat the process every 24 hours
     setInterval(getActivityData, 24 * 60 * 60 * 1000); // Repeat every 24 hours
   }, timeUntilNextDay);
-}, 30 * 60 * 1000); // Repeat every 30 minutes
+}
+
+// Call fetchDailyDataAtSeven to start fetching data every day at 7:00 AM
+fetchDailyDataAtSeven();
 
 function getActivityData() {
-  const currentTime = new Date();
+  const currentTime = new Date(); //"2024-04-09T08:30:00+02:00" this format is used for testing timestamps
+  console.log(currentTime);
   const nextTwoHours = new Date(currentTime.getTime() + 2 * 60 * 60 * 1000);
 
   let currentHour = currentTime.getHours();
@@ -48,7 +55,7 @@ function getActivityData() {
       return res.json();
     })
     .then((json) => {
-      recivedActivityData(json, currentTime, currentHour, nextHour);
+      recivedActivityData(json, currentHour, nextHour);
     })
     .catch((error) => {
       console.log("Error fetching Activity Data:", error);
@@ -63,7 +70,7 @@ function recivedActivityData(activity, currentHour, nextHour) {
     const activityHour = activityTime.getHours();
 
     // Check if activity hour falls within the current two-hour time frame
-    return activityHour >= currentHour && activityHour < nextHour;
+    return activityHour >= currentHour && activityHour < nextHour + 1; // Adjusted condition
   });
 
   console.log(currentHourActivities);
