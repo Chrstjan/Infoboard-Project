@@ -31,19 +31,21 @@ function busPlan(busdata) {
 
   const sliced_data = busdata.MultiDepartureBoard.Departure.slice(0, 5);
 
-  const ul = document.createElement("ul");
-  const li_name = document.createElement("li");
-  li_name.innerText = "BUS";
-  const li_line = document.createElement("li");
-  li_line.innerText = "FRA";
-  const li_direction = document.createElement("li");
-  li_direction.innerText = "TIL";
-  const li_time = document.createElement("li");
-  li_time.innerText = "AFGANG";
-  ul.append(li_name, li_line, li_direction, li_time);
-  container.append(ul);
+  //Bus view code structure
+  //   const ul = document.createElement("ul");
+  //   const li_name = document.createElement("li");
+  //   li_name.innerText = "BUS";
+  //   const li_line = document.createElement("li");
+  //   li_line.innerText = "FRA";
+  //   const li_direction = document.createElement("li");
+  //   li_direction.innerText = "TIL";
+  //   const li_time = document.createElement("li");
+  //   li_time.innerText = "AFGANG";
+  //   ul.append(li_name, li_line, li_direction, li_time);
+  //   container.append(ul);
 
   if (sliced_data.length) {
+    container.innerHTML = "";
     sliced_data.map((value, index) => {
       const ul = document.createElement("ul");
 
