@@ -3,6 +3,26 @@ const activityContainer = document.getElementById("activityContainer");
 
 getActivityData();
 
+const now = new Date();
+const nextFetchTime = new Date(
+  now.getFullYear(),
+  now.getMonth(),
+  now.getDate(), // Today's date
+  // 8,
+  // 15, 
+  // 0 
+);
+// If it's already past 8:15 AM, move to the next day
+if (now > nextFetchTime) {
+  nextFetchTime.setDate(nextFetchTime.getDate() + 1);
+}
+const timeUntilNextFetch = nextFetchTime - now;
+
+// Set interval to fetch data every day at 8:15 AM
+setInterval(() => {
+  getActivityData();
+}, timeUntilNextFetch);
+
 function getActivityData() {
   fetch("https://iws.itcn.dk/techcollege/schedules?departmentcode=smed")
     .then((res) => {
