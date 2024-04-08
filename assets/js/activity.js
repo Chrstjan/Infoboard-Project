@@ -1,29 +1,21 @@
 //GLOBALS
 const activityContainer = document.getElementById("activityContainer");
 
+// Fetch data initially
 getActivityData();
 
-const now = new Date();
-const nextFetchTime = new Date(
-  now.getFullYear(),
-  now.getMonth(),
-  now.getDate(), // Today's date
-  7,
-  0, 
-  0 
-);
-// If it's already past 8:15 AM, move to the next day
-if (now > nextFetchTime) {
-  nextFetchTime.setDate(nextFetchTime.getDate() + 1);
-}
-const timeUntilNextFetch = nextFetchTime - now;
-
-// Set interval to fetch data every day at 7:00 AM
+// Fetch data every 30 minutes
 setInterval(() => {
   getActivityData();
-}, timeUntilNextFetch);
+}, 30 * 60 * 1000);
 
 function getActivityData() {
+  const currentTime = new Date();
+  const nextTwoHours = new Date(currentTime.getTime() + 2 * 60 * 60 * 1000);
+
+  const currentHour = currentTime.getHours();
+  const nextHour = nextTwoHours.getHours();
+
   fetch("https://iws.itcn.dk/techcollege/schedules?departmentcode=smed")
     .then((res) => {
       if (!res.ok) {
@@ -32,41 +24,27 @@ function getActivityData() {
       return res.json();
     })
     .then((json) => {
-      recivedActivityData(json);
+      recivedActivityData(json, currentHour, nextHour);
     })
     .catch((error) => {
       console.log("Error fetching Activity Data:", error);
     });
 }
 
-function recivedActivityData(activity) {
+function recivedActivityData(activity, currentHour, nextHour) {
   console.log(activity.value);
 
-  const currentDate = new Date();
-  //This gets the current weekday
-  const currentDay = (currentDate.getDay() + 6) % 7;
+  const currentHourActivities = activity.value.filter((activityPlan) => {
+    const activityTime = new Date(activityPlan.StartDate);
+    const activityHour = activityTime.getHours();
 
-  /*
-    only used for testing weekdays 
-    0 = monday, 1 = tuesday...
-  */
-  //   const currentDay = 0;
-  console.log(`${currentDate}`);
-  console.log(`weekday number ${currentDay}`);
-
-  const currentDayActivities = activity.value.filter((activityPlan) => {
-    const dateString = activityPlan.StartDate;
-    const activityDate = new Date(dateString);
-    const activityDay = activityDate.getDay();
-    //This makes sure that it goes from sunday to monday
-    const adjustedActivityDay = activityDay === 0 ? 6 : activityDay - 1;
-    // console.log("Activity Day:", adjustedActivityDay);
-    return adjustedActivityDay === currentDay;
+    // Check if activity hour falls within the current two-hour time frame
+    return activityHour >= currentHour && activityHour < nextHour;
   });
 
-  console.log(currentDayActivities);
+  console.log(currentHourActivities);
 
-  const formattedActivities = currentDayActivities.map((activity) => {
+  const formattedActivities = currentHourActivities.map((activity) => {
     console.log(activity);
     const dateString = activity.StartDate;
     const date = new Date(dateString);
@@ -76,29 +54,30 @@ function recivedActivityData(activity) {
 
     const formattedTime = `${hours}:${minutes < 10 ? "0" : ""}${minutes}`;
 
-    // console.log(formattedTime);
-
     activity.StartDate = formattedTime;
     return activity;
   });
+
+  // Clear previous activities before updating the view
+  activityContainer.innerHTML = "";
+
+  // Update the view with the new activities
   classScheduleView(formattedActivities);
 }
 
 function classScheduleView(classActivity) {
-  const activityDivContainer = document.createElement("div");
-  activityDivContainer.classList.add("activity-container"); // Corrected the variable name
-  let activityElements = ""; // Accumulate HTML string outside the loop
+  let activityElements = "";
   classActivity.forEach((activity) => {
     activityElements += `
-        <span>
-            <hgroup>
-                <h2>${activity.Room}</h2>
-                <h2>${activity.Team}</h2>
-                <h2>${activity.Subject}</h2>
-                <h2>${activity.StartDate}</h2>
-            </hgroup>
-        </span>`;
+      <span>
+        <hgroup>
+          <h2>${activity.Room}</h2>
+          <h2>${activity.Team}</h2>
+          <h2>${activity.Subject}</h2>
+          <h2>${activity.StartDate}</h2>
+        </hgroup>
+      </span>`;
   });
-  activityDivContainer.innerHTML = activityElements;
-  activityContainer.appendChild(activityDivContainer);
+
+  activityContainer.innerHTML = activityElements;
 }
