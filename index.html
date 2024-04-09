@@ -4,12 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Infoboard-Project</title>
-    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script src="./assets/js/time.js" defer></script>
+    <script src="assets/js/canteen.js"></script>
+    <script src="assets/js/weather.js" defer></script>
     <script src="./assets/js/bus.js" defer></script>
-  </head>
-  <body>
-    <section id="app">
+</head>
+<body>
+    <div id="canteen"></div>
+    <div id="timeAndDate">
+        <p id="currentTime"></p>
+        <p id="currentDate"></p>
+    </div>
+  <section id="currentWeather"></section>
+   <img id="currentIcon"></img>
+   <section id="app">
       <div id="busplan"></div>
     </section>
-  </body>
+</body>
 </html>
