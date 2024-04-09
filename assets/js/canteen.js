@@ -41,8 +41,11 @@ function createCanteenMenu(days, dish) {
       const foodDay = document.createElement('p');
       const foodDish = document.createElement('p');
 
+      // Adjust the index to match the day numbering in your days array
+      const dayIndex = (today === 0 ? 7 : today); // Adjust Sunday (0) to 7
+
       // Apply a specific class to underline today's food
-      if (i === today) {
+      if (i === dayIndex - 1) {
           foodDay.className = 'foodDay today'; // Add class 'today' to foodDay
           foodDish.className = 'foodDish today'; // Add class 'today' to foodDish
       } else {

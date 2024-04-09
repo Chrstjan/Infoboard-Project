@@ -24,7 +24,7 @@ function getWeatherData() {
 }
 
 function receiveWeatherData(weatherData) {
-  let temperature = weatherData.main.temp;
+  let temperature = Math.round(weatherData.main.temp); // Math.round rounds up/down to nearest temperature /PO
   let weatherIcon = weatherData.weather[0].icon;
   console.log(weatherData);
 

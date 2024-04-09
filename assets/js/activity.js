@@ -80,6 +80,7 @@ async function activityPlan() {
       (elm) => elm.Stamp + 360000 >= curday_stamp && elm.Stamp < nextday_stamp
     )
   );
+
   nextday_events.push(
     ...events_data.filter((elm) => elm.Stamp >= nextday_stamp)
   );
@@ -92,6 +93,9 @@ async function activityPlan() {
   }
 
   console.log(curday_events);
+
+  // Makes sure that activity calender doesn't show more than 16 items at once /PO
+  curday_events = curday_events.slice(0, 16);
 
   let acc_html = `
         <table>
