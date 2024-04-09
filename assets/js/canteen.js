@@ -34,22 +34,29 @@ function fetchedcanteenData(canteenData) {
 }
 
 function createCanteenMenu(days, dish) {
-    const foodSection = document.getElementById('canteen');
-    for (let i = 0; i < days.length; i++) {
-        const foodDay = document.createElement('p');
+  const foodSection = document.getElementById('canteen');
+  const today = new Date().getDay(); // Get the current day of the week (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
 
-        foodDay.className = 'foodDay';
+  for (let i = 0; i < days.length; i++) {
+      const foodDay = document.createElement('p');
+      const foodDish = document.createElement('p');
 
-        const foodDish = document.createElement('p');
+      // Apply a specific class to underline today's food
+      if (i === today) {
+          foodDay.className = 'foodDay today'; // Add class 'today' to foodDay
+          foodDish.className = 'foodDish today'; // Add class 'today' to foodDish
+      } else {
+          foodDay.className = 'foodDay';
+          foodDish.className = 'foodDish';
+      }
 
-        foodDish.className = 'foodDish';
-
-        const dayTextNode = document.createTextNode(days[i]);
-        const dishTextNode = document.createTextNode(dish[i]);
-        
-        foodDay.appendChild(dayTextNode);
-        foodDish.appendChild(dishTextNode);
-        
-        foodSection.appendChild(foodDay);
-        foodSection.appendChild(foodDish);
-    }}
+      const dayTextNode = document.createTextNode(days[i]);
+      const dishTextNode = document.createTextNode(dish[i]);
+      
+      foodDay.appendChild(dayTextNode);
+      foodDish.appendChild(dishTextNode);
+      
+      foodSection.appendChild(foodDay);
+      foodSection.appendChild(foodDish);
+  }
+}

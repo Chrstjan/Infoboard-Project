@@ -48,6 +48,7 @@ function busPlan(busdata) {
     container.innerHTML = "";
     sliced_data.map((value, index) => {
       const ul = document.createElement("ul");
+      // ul.className = 
 
       const li_name = document.createElement("li");
       li_name.innerText = value.line;
@@ -63,7 +64,7 @@ function busPlan(busdata) {
       const li_time = document.createElement("li");
       li_time.innerText = calcRemainingTime(`${value.date} ${value.time}`);
 
-      ul.append(li_name, li_stop, li_direction, li_time);
+      ul.append(li_name, li_stop, li_time);
       container.append(ul);
     });
   }

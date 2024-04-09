@@ -6,22 +6,24 @@
     <title>Infoboard-Project</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
     <script src="./assets/js/time.js" defer></script>
-    <script src="assets/js/canteen.js"></script>
-    <script src="assets/js/weather.js" defer></script>
     <script src="./assets/js/bus.js" defer></script>
+    <script src="./assets/js/weather.js" defer></script>
     <script src="./assets/js/activity.js" defer></script>
+    <script src="./assets/js/canteen.js" defer></script>
 </head>
 <body>
-    <div id="canteen"></div>
-    <div id="timeAndDate">
+  <main id="container">
+    <section id="canteen"></section>
+    <section id="timeAndDate">
         <p id="currentTime"></p>
         <p id="currentDate"></p>
-    </div>
-  <section id="currentWeather"></section>
-   <img id="currentIcon"></img>
-   <section id="app">
-      <div id="busplan"></div>
     </section>
-  <section id="activityContainer"></section>
+    <div id="weather">
+      <section id="currentWeather"></section>
+      <img id="currentIcon"></img>
+    </div>
+    <section id="busplan"></section>
+    <section id="activityContainer"></section>
+  </main>
 </body>
 </html>

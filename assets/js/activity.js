@@ -30,9 +30,9 @@ function fetchDailyDataAtSeven() {
 fetchDailyDataAtSeven();
 
 function getActivityData() {
-  const currentTime = new Date(); //"2024-04-09T08:30:00+02:00" this format is used for testing timestamps
+  const currentTime = new Date();
   console.log(currentTime);
-  const nextTwoHours = new Date(currentTime.getTime() + 2 * 60 * 60 * 1000);
+  const nextTwoHours = new Date(currentTime.getTime() + (1 * 60 * 60 * 1000) + (30 * 60 * 1000)); // Current time + 1 hour + 30 minutes
 
   let currentHour = currentTime.getHours();
   let nextHour = nextTwoHours.getHours();
@@ -41,7 +41,7 @@ function getActivityData() {
   if (currentHour === 23) {
     // Reset currentHour and nextHour for the next day
     currentHour = 0;
-    nextHour = nextTwoHours.getHours(); // Assigning the correct nextHour
+    nextHour = 0; // Reset nextHour to 0 for the next day
 
     // Update the current date to the next day
     currentTime.setDate(currentTime.getDate() + 1);
@@ -56,6 +56,7 @@ function getActivityData() {
     })
     .then((json) => {
       recivedActivityData(json, currentHour, nextHour);
+      console.log(json);
     })
     .catch((error) => {
       console.log("Error fetching Activity Data:", error);
@@ -65,17 +66,27 @@ function getActivityData() {
 function recivedActivityData(activity, currentHour, nextHour) {
   console.log(activity.value);
 
-  const currentHourActivities = activity.value.filter((activityPlan) => {
+  const uniqueActivities = []; // Array to store unique activities
+
+  activity.value.forEach((activityPlan) => {
     const activityTime = new Date(activityPlan.StartDate);
     const activityHour = activityTime.getHours();
 
     // Check if activity hour falls within the current two-hour time frame
-    return activityHour >= currentHour && activityHour < nextHour + 1; // Adjusted condition
+    if (activityHour >= currentHour && activityHour < nextHour + 1) {
+      // Check if the activity is already in the uniqueActivities array
+      const exists = uniqueActivities.some((a) => a.StartDate === activityPlan.StartDate && a.Room === activityPlan.Room);
+
+      // If the activity is not already in the uniqueActivities array, add it
+      if (!exists) {
+        uniqueActivities.push(activityPlan);
+      }
+    }
   });
 
-  console.log(currentHourActivities);
+  console.log(uniqueActivities);
 
-  const formattedActivities = currentHourActivities.map((activity) => {
+  const formattedActivities = uniqueActivities.map((activity) => {
     console.log(activity);
     const dateString = activity.StartDate;
     const date = new Date(dateString);
@@ -102,7 +113,7 @@ function classScheduleView(classActivity) {
     activityElements += `
       <span>
         <hgroup>
-          <h2>${activity.Room}</h2>
+          <h2 id="room-color">${activity.Room}</h2>
           <h2>${activity.Team}</h2>
           <h2>${activity.Subject}</h2>
           <h2>${activity.StartDate}</h2>
