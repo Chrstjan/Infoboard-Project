@@ -1,0 +1,42 @@
+#busDeparture {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+#busDeparture span header hgroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    background: #00000055;
+    width: fit-content;
+}
+
+#busDeparture span header h3 {
+    color: #fff;
+}
+
+#busDeparture span header h3:first-of-type {
+    /* background: #F5D45B; */
+    /* width: 50px;
+    height: 60px; */
+    color: #000;
+    text-align: center;
+}
+
+#currentTime {
+    font-size: 30vh; /* Adjust font size as needed */
+    cursor: default;
+    margin: 0;
+    padding: 0;
+  }
+
+#currentDate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
