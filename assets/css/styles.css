@@ -1,57 +1,62 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #121212; /* Dark background color */
-    color: #fff; /* Text color */
-    /* display: flex;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #121212; /* Dark background color */
+  color: #fff; /* Text color */
+  /* display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column; */
-    height: 100vh; /* Make the body take up the entire viewport height */
+  height: 100vh; /* Make the body take up the entire viewport height */
 }
 
 #container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
 
-    #activityContainer { grid-area: 1 / 1 / 5 / 2; }
-    #timeAndDate { grid-area: 1 / 2 / 3 / 3; }
-    #weather { grid-area: 3 / 2 / 5 / 3; }
-    #canteen { grid-area: 1 / 3 / 3 / 4; }
-    #busplan { grid-area: 3 / 3 / 5 / 4; }
-   
-
-
+#activityContainer {
+  grid-area: 1 / 1 / 5 / 2;
+}
+#timeAndDate {
+  grid-area: 1 / 2 / 3 / 3;
+}
+#weather {
+  grid-area: 3 / 2 / 5 / 3;
+}
+#canteen {
+  grid-area: 1 / 3 / 3 / 4;
+}
+#busplan {
+  grid-area: 3 / 3 / 5 / 4;
+}
 
 /* BUS PLAN */
 
 #busplan {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 #busplan ul {
-    /* display: grid;
+  /* display: grid;
     grid-template-columns: repeat(4, 2fr); */
-    display: flex;
-    justify-content: space-between;
-    gap: 0.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 #busplan ul li {
-    /* background-color: aqua; */
+  /* background-color: aqua; */
 }
-
 
 /* #busplan span header hgroup {
     display: flex;
@@ -68,88 +73,80 @@ body {
 } */
 
 #busplan span header h3:first-of-type {
-    /* background: #F5D45B; */
-    /* width: 50px;
+  /* background: #F5D45B; */
+  /* width: 50px;
     height: 60px; */
-    color: #000;
-    text-align: center;
+  color: #000;
+  text-align: center;
 }
-
 
 /*Activity  */
-#activityContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 0.4rem;
+#activity {
+  padding: 0rem 1rem;
 }
 
-#activityContainer span hgroup{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
+#activity table {
+  width: 100%;
+  border: solid 1px #000;
+  border-spacing: 0px;
 }
 
-#activityContainer span hgroup #room-color {
-    /* background: red;
-    border-radius: 10px;
-    padding: 0.1rem 0.1rem; */
+#activity table tr {
+  border: 1px solid #000;
+}
+
+#activity table th,
+td {
+  border: 1px solid #000;
+  text-align: center;
 }
 
 /* CLOCK */
 #timeAndDate {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
 }
 
 #currentTime {
-    font-size: 10vh; /* Adjust font size as needed */
-    margin: 0;
-    padding: 0;
-  }
-
-#currentDate {
-    font-size: 1.3rem;
+  font-size: 10vh; /* Adjust font size as needed */
+  margin: 0;
+  padding: 0;
 }
 
+#currentDate {
+  font-size: 1.3rem;
+}
 
 /* MENU */
 #canteen {
-    /* background-color: lightblue; */
+  /* background-color: lightblue; */
 }
 
 .foodDish {
-    /* color: red; */
+  /* color: red; */
 }
 
 .today {
-    text-decoration: underline;
+  text-decoration: underline;
 }
-
-
-
-
 
 /* WEATHER */
 
 #weather {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* background-color: #425462; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: #425462; */
 }
 
 #currentIcon {
-    width: 250px;
-    /* fill: #7ce1f6; */
-    filter: invert(100%);
+  width: 250px;
+  /* fill: #7ce1f6; */
+  filter: invert(100%);
 }
 
 #currentWeather {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
 }
