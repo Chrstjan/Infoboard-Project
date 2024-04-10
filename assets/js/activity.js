@@ -9,7 +9,7 @@ async function myFetchData(endpoint) {
 
   try {
     response = await fetch(endpoint);
-    console.log(response);
+    // console.log(response);
     if (response.ok) {
       const json = await response.json();
       return json;
@@ -86,13 +86,13 @@ async function activityPlan() {
   );
 
   if (nextday_events.length) {
-    console.log(nextday_events[0].StartDate);
+    // console.log(nextday_events[0].StartDate);
     const nextday_date = new Date(nextday_events[0].StartDate);
     curday_events.push({ Day: nextday_date });
     curday_events.push(...nextday_events);
   }
 
-  console.log(curday_events);
+  // console.log(curday_events);
 
   // Makes sure that activity calender doesn't show more than 16 items at once /PO
   curday_events = curday_events.slice(0, 16);
@@ -108,7 +108,7 @@ async function activityPlan() {
             </tr>`;
 
   curday_events.map((event) => {
-    console.log(event);
+    // console.log(event);
     acc_html += event.Day
       ? `
                 <tr>
@@ -129,5 +129,5 @@ async function activityPlan() {
   const container = document.getElementById("activity");
   container.innerHTML = acc_html;
 
-  console.log(events_data);
+  // console.log(events_data);
 }

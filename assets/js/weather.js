@@ -59,7 +59,8 @@ function displayIcon(myIcon) {
     "10d": "rain.svg",
     "11d": "thunderstorm.svg",
     "13d": "snow.svg",
-    "15d": "fog.svg"
+    "15d": "fog.svg",
+    "50d": "light_rain.svg"
   };
 
   const iconFileName = weatherIconsList[myIcon];

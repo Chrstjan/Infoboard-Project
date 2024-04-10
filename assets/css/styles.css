@@ -1,4 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
+  /*display: none;  funny haha */
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
@@ -8,16 +13,35 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column; */
-  height: 100vh; /* Make the body take up the entire viewport height */
+  height: 100vh;
+  width: 100vw;
 }
 
+/* #container {
+  border: 1px solid white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+} */
+
 #container {
-    border: 1px solid white; /* To see where we're working /PO */
-    display: grid; 
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0px;
+  /* border: 1px solid white; To see where we're working /PO */
+  display: grid; 
+  /* grid-template-rows: 1fr 1fr; */
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0px;
 }
+
+/* .main {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr 1.8fr;
+  grid-template-rows: repeat(2, auto);
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+  width: 100%;
+  height: 100%;
+} */
 
 #activityContainer {
   grid-area: 1 / 1 / 3 / 2;
@@ -85,7 +109,7 @@ body {
 
 /*Activity  */
 #activity {
-    padding: 0 1rem;
+    /* padding: 0 1rem; */
     background: red;
 }
 
@@ -103,6 +127,7 @@ body {
 td {
   border: 1px solid #000;
   text-align: center;
+  height: 2rem;
 }
 
 /* CLOCK */

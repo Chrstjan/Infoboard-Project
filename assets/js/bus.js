@@ -16,7 +16,7 @@ function getBusdata() {
       return res.json();
     })
     .then((json) => {
-      console.log(json);
+      // console.log(json);
       busPlan(json);
     })
     .catch((error) => {
@@ -25,7 +25,7 @@ function getBusdata() {
 }
 
 function busPlan(busdata) {
-  console.log(busdata);
+  // console.log(busdata);
   const container = document.getElementById("busplan");
   container.innerHTML = "";
 
