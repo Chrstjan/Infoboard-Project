@@ -67,24 +67,24 @@ function busPlan(busdata) {
         .toUpperCase();
 
       const li_time = document.createElement("li");
-      // if (value.rtTime) {
-      //   li_time.innerText = calcRemainingTime(`${value.date} ${value.rtTime}`);
-      //   li_time.classList.add("delayed-bus");
-      // }
-      // else {
-      //   li_time.innerText = calcRemainingTime(`${value.date} ${value.time}`);
-      // }
       if (value.rtTime) {
-        const remainingTime = calcRemainingTime(`${value.date} ${value.rtTime}`);
-        if (remainingTime > 0) {
-            li_time.innerText = remainingTime;
-            li_time.classList.add("delayed-bus");
-        } else {
-            li_time.innerText = "";
-        }
-    } else {
+        li_time.innerText = calcRemainingTime(`${value.date} ${value.rtTime}`);
+        li_time.classList.add("delayed-bus");
+      }
+      else {
         li_time.innerText = calcRemainingTime(`${value.date} ${value.time}`);
-    }
+      }
+    //   if (value.rtTime) {
+    //     const remainingTime = calcRemainingTime(`${value.date} ${value.rtTime}`);
+    //     if (remainingTime > 0) {
+    //         li_time.innerText = remainingTime;
+    //         li_time.classList.add("delayed-bus");
+    //     } else {
+    //         li_time.innerText = "";
+    //     }
+    // } else {
+    //     li_time.innerText = calcRemainingTime(`${value.date} ${value.time}`);
+    // }
       
 
       ul.append(li_name, li_stop, li_time);
