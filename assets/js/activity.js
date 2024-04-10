@@ -22,7 +22,7 @@ async function myFetchData(endpoint) {
 activityPlan();
 
 async function activityPlan() {
-  const config = await myFetchData("../config.json");
+  const config = await myFetchData("https://chrstjan.github.io/Infoboard-Project/config.json");
 
   const endpoint =
     "https://iws.itcn.dk/techcollege/schedules?departmentcode=smed"; //Change the endpoint variable to the desired endpoint
@@ -35,7 +35,7 @@ async function activityPlan() {
     config.array_valid_educations.includes(elm.Education)
   );
 
-  // console.log(events_data);
+  console.log(events_data);
 
   events_data.map((event) => {
     event.Time = new Date(event.StartDate).toLocaleTimeString("en-GB", {
@@ -88,8 +88,9 @@ async function activityPlan() {
   if (nextday_events.length) {
     // console.log(nextday_events[0].StartDate);
     const nextday_date = new Date(nextday_events[0].StartDate);
-    curday_events.push({ Day: nextday_date });
-    curday_events.push(...nextday_events);
+    //Sorting the activities for the next day away
+    // curday_events.push({ Day: nextday_date });
+    // curday_events.push(...nextday_events);
   }
 
   // console.log(curday_events);
