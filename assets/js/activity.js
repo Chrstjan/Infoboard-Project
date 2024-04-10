@@ -101,7 +101,7 @@ async function activityPlan() {
   let acc_html = `
         <table>
             <tr>
-                <th>KL</th>
+                <th>Kl.</th>
                 <th>Uddannelse</th>
                 <th>Hold</th>
                 <th>Fag</th>

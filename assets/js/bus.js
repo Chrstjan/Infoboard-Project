@@ -73,6 +73,7 @@ function busPlan(busdata) {
       }
       else {
         li_time.innerText = calcRemainingTime(`${value.date} ${value.time}`);
+        li_time.classList.add("bus-departure");
       }
     //   if (value.rtTime) {
     //     const remainingTime = calcRemainingTime(`${value.date} ${value.rtTime}`);
