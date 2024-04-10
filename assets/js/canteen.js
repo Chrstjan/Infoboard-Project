@@ -39,7 +39,9 @@ function createCanteenMenu(days, dish) {
 
   for (let i = 0; i < days.length; i++) {
       const foodDay = document.createElement('p');
+      foodDay.id = "foodDay"
       const foodDish = document.createElement('p');
+      foodDish.id = "foodDish"
 
       // Adjust the index to match the day numbering in your days array
       const dayIndex = (today === 0 ? 7 : today); // Adjust Sunday (0) to 7

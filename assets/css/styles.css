@@ -1,20 +1,36 @@
 * {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
+}
+:root {
+  --dark-grey: #283239;
+  --grey: #3c4d59;
+  
+  --green-grey: #97beac;
+  --green: #48cfae;
+  --blue-light: #4dc1e8;
+  --blue: #5e9beb;
+  --purple: #ac92ed;
+
+  --yellow: #f6bc59;
+  --orange: #f37950;
+  --red: #fa425a;
+  --violet: #813563;
 }
 
 body {
   /*display: none;  funny haha */
+  overflow: hidden;
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #121212; /* Dark background color */
+  background-color: var(--dark-grey); /* Dark background color */
   color: #fff; /* Text color */
   /* display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column; */
-  height: 100vh;
-  width: 100vw;
+  /* height: 100vh;
+  width: 100vw; */
 }
 
 /* #container {
@@ -26,43 +42,24 @@ body {
 } */
 
 #container {
-  /* border: 1px solid white; To see where we're working /PO */
-  display: grid; 
-  /* grid-template-rows: 1fr 1fr; */
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 0px;
-}
-
-/* .main {
   display: grid;
-  grid-template-columns: 1.3fr 0.8fr 1.8fr;
-  grid-template-rows: repeat(2, auto);
-  grid-column-gap: 0;
-  grid-row-gap: 0;
-  width: 100%;
-  height: 100%;
-} */
-
-#activityContainer {
-  grid-area: 1 / 1 / 3 / 2;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 50px;
 }
 
-#timeAndDate {
-  grid-area: 1 / 2 / 2 / 3;
-}
+#activityContainer { grid-area: 1 / 1 / 3 / 2; }
+#canteen { grid-area: 1 / 3 / 2 / 4; }
+#busplan { grid-area: 2 / 3 / 3 / 4; }
+.time-date-weather { grid-area: 1 / 2 / 3 / 3; }
 
-#weather {
-  grid-area: 2 / 2 / 3 / 3;
-}
 
-#canteen {
-  grid-area: 1 / 3 / 2 / 4;
-}
 
-#busplan {
-  grid-area: 2 / 3 / 3 / 4;
+#bus-canteen  {
+  background: var(--grey);
+  
 }
-
 /* BUS PLAN */
 
 #busplan {
@@ -70,6 +67,9 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  width:600px;
+  padding-top: 5rem;
+  margin: 4rem 0 4rem 0;
 }
 
 #busplan ul {
@@ -78,39 +78,28 @@ body {
     width: 100%;
     list-style: none;
     padding: 0;
-    margin: 0;
+    
 }
 #busplan ul li {
   /* background-color: aqua; */
   border-bottom: solid 1px red;
-}
-
-/* #busplan span header hgroup {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    background: #00000055;
-    width: fit-content;
-}
-
-#busplan span header h3 {
-    color: #fff;
-} */
-
-#busplan span header h3:first-of-type {
-  /* background: #F5D45B; */
-  /* width: 50px;
-    height: 60px; */
-  color: #000;
-  text-align: center;
+  font-size: 23px;
 }
 
 /*Activity  */
+
+#activityContainer {
+  background: var(--grey);
+  height: fit-content;
+  padding-bottom: 1rem;
+}
 #activity {
     /* padding: 0 1rem; */
-    background: red;
+    background: var(--yellow);
+    width:650px;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin: 4.5rem 2rem 4.5rem 2rem;
 }
 
 #activity table {
@@ -127,34 +116,78 @@ body {
 td {
   border: 1px solid #000;
   text-align: center;
-  height: 2rem;
+  height: 3.5rem;
 }
 
 /* CLOCK */
+.time-date-weather {
+  margin: 4rem 0 4rem 0;
+  padding-top: 4rem;
+}
+
+
 #timeAndDate {
+  /* position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%); */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center
 }
 
 #currentTime {
-  font-size: 10vh; /* Adjust font size as needed */
+  font-size: 15vh; /* Adjust font size as needed */
   margin: 0;
   padding: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 24px;
 }
 
 #currentDate {
   font-size: 1.3rem;
 }
 
+/* WEATHER */
+
+#weather {
+  /* position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4rem;
+  /* background-color: #425462; */
+}
+
+#currentIcon {
+  margin-top: 1rem;
+  width: 200px;
+  /* fill: #7ce1f6; */
+  filter: invert(100%);
+}
+
+#currentWeather {
+  font-size: 4rem;
+}
+
+
+
 /* MENU */
 #canteen {
   /* background-color: lightblue; */
+  width:600px;
+  padding-bottom: 1rem;
+  margin: 4rem 0 4rem 0;
 }
 
 #canteen p {
     /* margin: 1rem; */
+    font-size: 23px;
 }
 
 .foodDish {
@@ -165,22 +198,3 @@ td {
     text-decoration: underline;
 }
 
-/* WEATHER */
-
-#weather {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* background-color: #425462; */
-}
-
-#currentIcon {
-    margin-top: 1rem;
-    width: 120px;
-    /* fill: #7ce1f6; */
-    filter: invert(100%);
-}
-
-#currentWeather {
-    font-size: 2.5rem;
-}
