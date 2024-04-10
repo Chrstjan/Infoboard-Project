@@ -18,6 +18,7 @@ function getBusdata() {
     .then((json) => {
       // console.log(json);
       busPlan(json);
+      console.log(json);
     })
     .catch((error) => {
       console.log("Error", error);
@@ -30,6 +31,8 @@ function busPlan(busdata) {
   container.innerHTML = "";
 
   const sliced_data = busdata.MultiDepartureBoard.Departure.slice(0, 5);
+
+  console.log(sliced_data);
 
   //Bus view code structure
   //   const ul = document.createElement("ul");
@@ -49,20 +52,40 @@ function busPlan(busdata) {
     sliced_data.map((value, index) => {
       const ul = document.createElement("ul");
       // ul.className = 
-
       const li_name = document.createElement("li");
+      li_name.classList.add("bus-line");
       li_name.innerText = value.line;
 
       const li_stop = document.createElement("li");
+      li_stop.classList.add("line-stop");
       li_stop.innerText = value.stop.replace(/\([^)]*\)/g, "").toUpperCase();
 
       const li_direction = document.createElement("li");
+      li_direction.classList.add("line-direction");
       li_direction.innerText = value.direction
         .replace(/\([^)]*\)/g, "")
         .toUpperCase();
 
       const li_time = document.createElement("li");
-      li_time.innerText = calcRemainingTime(`${value.date} ${value.time}`);
+      // if (value.rtTime) {
+      //   li_time.innerText = calcRemainingTime(`${value.date} ${value.rtTime}`);
+      //   li_time.classList.add("delayed-bus");
+      // }
+      // else {
+      //   li_time.innerText = calcRemainingTime(`${value.date} ${value.time}`);
+      // }
+      if (value.rtTime) {
+        const remainingTime = calcRemainingTime(`${value.date} ${value.rtTime}`);
+        if (remainingTime > 0) {
+            li_time.innerText = remainingTime;
+            li_time.classList.add("delayed-bus");
+        } else {
+            li_time.innerText = "";
+        }
+    } else {
+        li_time.innerText = calcRemainingTime(`${value.date} ${value.time}`);
+    }
+      
 
       ul.append(li_name, li_stop, li_time);
       container.append(ul);
