@@ -58,6 +58,7 @@ body {
 
 #bus-canteen  {
   background: var(--grey);
+  height: 100vh;
   
 }
 /* BUS PLAN */
@@ -120,6 +121,7 @@ body {
   background: var(--grey);
   height: fit-content;
   padding-bottom: 1rem;
+  height: 100vh;
 }
 #activity {
     /* padding: 0 1rem; */
@@ -156,14 +158,20 @@ td {
   margin: 4.5rem 2rem 4.5rem 2rem;
  
 }
-#canteen p :nth-child(odd){
-  margin-bottom: 5rem;
+#canteen p:nth-child(even){
+  margin-bottom: 1rem;
 }
   
 #canteen p {
     /* margin: 1rem; */
     font-size: 23px;
     background-color: var(--blue-light);
+    margin: 0;
+}
+
+#canteen p:last-child {
+  margin: 0;
+
 }
 
 .foodDish {
