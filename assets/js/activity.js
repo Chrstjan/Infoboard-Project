@@ -22,7 +22,7 @@ async function myFetchData(endpoint) {
 activityPlan();
 
 async function activityPlan() {
-  const config = await myFetchData("https://chrstjan.github.io/Infoboard-Project/config.json");
+  const config = await myFetchData("https://chrstjan.github.io/Infoboard-Project/assets/js/config.json");
 
   const endpoint =
     "https://iws.itcn.dk/techcollege/schedules?departmentcode=smed"; //Change the endpoint variable to the desired endpoint
