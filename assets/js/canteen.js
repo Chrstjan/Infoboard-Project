@@ -28,18 +28,6 @@ function fetchCanteenMenu() {
     });
 }
 
-function fetchedcanteenData(canteenData) {
-  let myCanteenData = getLocalCanteenMenuData();
-  //This pushes the array from the api into our data object in our local storage
-  myCanteenData.canteenMenu.push(canteenData.Days);
-  //This saves what we pushed into our data object in our local storage
-  saveCanteenMenuData(myCanteenData);
-
-  let days = canteenData.Days.map((DayName) => DayName.DayName);
-  let dish = canteenData.Days.map((Dayname) => Dayname.Dish);
-  createCanteenMenu(days, dish);
-}
-
 //This function checks if there already is an data object in local storage if not it creates a new one
 function defineStorage() {
   let myCanteenData = localStorage.getItem("myCanteenData");
@@ -68,6 +56,29 @@ function getLocalCanteenMenuData() {
   let myCanteenString = localStorage.getItem("myCanteenData");
   let myCanteenData = JSON.parse(myCanteenString);
   return myCanteenData;
+}
+
+function fetchedcanteenData(canteenData) {
+  //This variable referse to our data object in local storage
+  let myCanteenData = getLocalCanteenMenuData();
+
+  //Checks if we get the canteenData from the api
+  if (canteenData && canteenData.Days && canteenData.Days.length > 0) {
+    //This pushes the array from the api into our data object's array in our local storage
+    myCanteenData.canteenMenu = [canteenData.Days];
+  } else {
+    //If we don't get the canteenData from the api, We use the data object's array in our local storage instead
+    canteenData = {
+      Days: myCanteenData.canteenMenu[0] || [],
+    };
+  }
+
+  //This saves what we pushed into our data object's array in our local storage
+  saveCanteenMenuData(myCanteenData);
+
+  let days = canteenData.Days.map((DayName) => DayName.DayName);
+  let dish = canteenData.Days.map((Dayname) => Dayname.Dish);
+  createCanteenMenu(days, dish);
 }
 
 function createCanteenMenu(days, dish) {
