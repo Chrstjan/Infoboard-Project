@@ -108,6 +108,14 @@ async function activityPlan() {
                 <th>Lokale</th>
             </tr>`;
 
+
+if (curday_events.length === 0) {
+  acc_html += `
+    <tr>
+      <td colspan="5">Der er ikke flere aktiviteter at vise for idag.</td>
+    </tr>
+  `;
+} else {
   curday_events.map((event) => {
     // console.log(event);
     acc_html += event.Day
@@ -124,7 +132,7 @@ async function activityPlan() {
                <td>${event.Room}</td>
             </tr>
             `;
-  });
+  });}
 
   acc_html += `</table>`;
   const container = document.getElementById("activity");

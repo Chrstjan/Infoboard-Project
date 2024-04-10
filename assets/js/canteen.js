@@ -49,7 +49,7 @@ function createCanteenMenu(days, dish) {
       // Apply a specific class to underline today's food
       if (i === dayIndex - 1) {
           foodDay.className = 'foodDay today'; // Add class 'today' to foodDay
-          foodDish.className = 'foodDish today'; // Add class 'today' to foodDish
+          // foodDish.className = 'foodDish today'; // Add class 'today' to foodDish
       } else {
           foodDay.className = 'foodDay';
           foodDish.className = 'foodDish';

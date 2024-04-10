@@ -71,20 +71,19 @@ body {
   align-items: center;
   gap: 1rem;
   width: 600px;
-  padding-top: 5rem;
+  padding-top: 3rem;
   margin: 4.5rem 2rem 4.5rem 2rem;
 }
 
 #busplan ul {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 0.2fr 1.5fr 0.3fr;
     width: 100%;
     list-style: none;
     padding: 15px 0;
     margin: 0;
+    border-radius: 10px;
 }
-
-
 
 #busplan ul:nth-child(1){
   background-color: var(--blue-light);
@@ -107,23 +106,32 @@ body {
 
 .bus-line {
   background-color: #150c272c;
-  padding-left: 1rem;
-  /* padding: 15px 0;
-  margin: 0; */
+  /* padding-left: 1rem; */
+  /* padding: 0.3rem; */
+  /* padding: 15px 0; */
+  margin: 0;
+  margin-left: 1rem;
+  font-weight: bold;
+  text-align: center;
 }
 
 .line-stop {
-  padding-left: 1rem;
+  padding-left: 1.5rem;
+  /* padding-left: 1rem; */
 }
 
 .bus-departure {
-  padding-left: 1rem;
+  /* padding-left: 1rem; */
+  display: flex;
+  justify-content: center;
 }
 
 #busplan ul .delayed-bus {
   color: red;
+  display: flex;
+  justify-content: center;
   /* text-align: right; */
-  padding-left: 1rem;
+  /* padding-left: 1rem; */
 }
 
 #busplan ul li {
@@ -169,25 +177,58 @@ td {
 /* MENU */
 #canteen {
   /* background-color: lightblue; */
-  width:600px;
-  padding-bottom: 1rem;
+  width: 600px;
+  /* padding-bottom: 1rem; */
   margin: 4.5rem 2rem 4.5rem 2rem;
  
 }
+
+#canteen p:nth-child(odd) {
+  padding: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 #canteen p:nth-child(even){
   margin-bottom: 1rem;
+  padding: 0 15px 15px 15px;
+  /* padding-left: 15px; */
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#canteen p:nth-child(1), #canteen p:nth-child(2) {
+  background: #093145;
+}
+
+#canteen p:nth-child(3), #canteen p:nth-child(4) {
+  background: #0C374D;
+}
+
+#canteen p:nth-child(5), #canteen p:nth-child(6) {
+  background: #0D3D56;
+}
+
+#canteen p:nth-child(7), #canteen p:nth-child(8) {
+  background: #3C6478;
+}
+
+#canteen p:nth-child(9), #canteen p:nth-child(10) {
+  background: #107896;
 }
   
 #canteen p {
     /* margin: 1rem; */
-    font-size: 23px;
+    font-size: 22px;
     background-color: var(--blue-light);
     margin: 0;
 }
 
 #canteen p:last-child {
-  margin: 0;
+  margin: 0; /* Does nothing? PO */
+}
 
+.foodDay {
+  font-weight: bold;
 }
 
 .foodDish {
@@ -195,7 +236,7 @@ td {
 }
 
 .today {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* CLOCK */
