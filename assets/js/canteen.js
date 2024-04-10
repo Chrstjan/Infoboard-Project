@@ -1,4 +1,5 @@
 fetchCanteenMenu();
+fetchedcanteenData(); //Used for testing outside of the schools network
 defineStorage();
 function fetchCanteenMenu() {
   const canteenAPI =
