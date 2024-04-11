@@ -17,14 +17,35 @@
   --violet: #813563;
 }
 
+/* Animations */
+@keyframes svgAnimation {
+  0% { transform: translateY(0px);}
+  50% {transform: translateY(13px);}
+  100% { transform: translateY(0px);}
+}
+
+/* Funny haha's */
+@keyframes spin {
+  0% {rotate: 360deg;}
+}
+
+@keyframes uglyColor {
+  0% {color: yellow;}
+  10% {color: green;}
+  10% {color: blue;}
+  100% {color: purple;}
+}
+
 body {
   /*display: none;  funny haha */
-  /* overflow: hidden; */
+  overflow: hidden;
   margin: 0;
   padding: 0;
   /* margin-top: 8rem; */
   font-family: Arial, sans-serif;
   background-color: var(--dark-grey); /* Dark background color */
+  /* Funny page spin */
+  /* animation: spin 2.5s infinite linear; */
   color: #fff; /* Text color */
   /* display: flex;
     justify-content: center;
@@ -60,9 +81,9 @@ body {
 
 #bus-canteen  {
   /* background: var(--grey); */
-  /* height: 100vh;   */
+  height: 100vh;  
   max-width: 700px;
-  /* max-height: 3000px; */
+  max-height: 3000px;
   background-image: url('../img/pexels-amine-ispir-13413984.jpg');
   background-size: cover;
 }
@@ -83,7 +104,7 @@ body {
     grid-template-columns: 0.2fr 1.5fr 0.3fr;
     width: 100%;
     list-style: none;
-    padding: 15px 0;
+    padding: 10px 15px 10px 0;
     margin: 0;
     border-radius: 30px;
 }
@@ -140,6 +161,7 @@ body {
 
 #busplan ul li {
    font-size: 23px;
+   padding: 7px;
 }
 
 
@@ -153,23 +175,34 @@ body {
 }
 #activity {
     /* padding: 0 1rem; */
-    background: var(--purple);
+    background: var(--violet);
     width: 700px;
     grid-row-start: 1;
     grid-row-end: 2;
     margin: 2rem 2rem 2rem 2rem;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 #activity-info {
   display: grid;
   grid-template-columns: 0.4fr 0.9fr 0.8fr 1fr 0.5fr;
-  border-bottom: solid 1px black;  
+  border-bottom: solid 1px black;
+  margin-top: 1rem;
+
 }
 
 #activity-info h2 {
   font-size: 22px;
   font-weight: normal;
   height: 2.5rem;
+  /* padding-left: 0.2rem; */
+  margin: 0;
+}
+
+#activity-info h2:nth-child(1) {
+  padding-left: 0.5rem;
 }
 
 .activity-rooms {
@@ -177,23 +210,30 @@ body {
   grid-template-columns: 0.4fr 0.9fr 0.8fr 1fr 0.5fr;
 }
 
+.activity-rooms:nth-child(odd) {
+  background-color: var(--orange);
+}
+.activity-rooms:nth-child(even) {
+  background-color: var(--yellow);
+}
+
 .activity-rooms h2 {
   font-weight: normal;
   font-size: 22px;
-  /* text-align: center; */
-  /* border: solid 1px red; */
   border-bottom: solid 1px black;
-  /* margin-top: 0.2rem; */
-  /* padding-top: 0.2rem; */
-  padding-bottom: 0.2rem;
+  /* padding-bottom: 0.2rem; */
+  /* padding-left: 0.2rem; */
   margin-bottom: 0;
   height: 2.5rem;
-  /* margin-left: 0.2rem; */
 }
 
-.activity-rooms h2:nth-child(5) {
-  text-align: right;
-  padding-right: 0.5rem;
+.activity-rooms h2:nth-child(1) {
+  /* text-align: right; */
+  padding-left: 0.5rem;
+}
+
+.activity-rooms h2:nth-child(4) {
+  overflow: hidden;
 }
 
 /* #activity table {
@@ -220,20 +260,28 @@ td {
   width: 600px;
   /* padding-bottom: 1rem; */
   margin: 2rem 2rem 1rem 2rem;
+  background-color: #192b428a;
+  width: 600px;
+  padding-bottom: 1rem;
+  margin: 4rem 2rem 1rem 2rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
  
 }
 
+/* 
 #canteen p:nth-child(odd) {
   padding: 15px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 50px;
 }
 #canteen p:nth-child(even){
   margin-bottom: 1rem;
   padding: 0 15px 15px 15px;
-  /* padding-left: 15px; */
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 
 #canteen p:nth-child(1), #canteen p:nth-child(2) {
@@ -254,13 +302,21 @@ td {
 
 #canteen p:nth-child(9), #canteen p:nth-child(10) {
   background: #107896;
-}
+} */
   
 #canteen p {
     /* margin: 1rem; */
     font-size: 22px;
-    background-color: var(--blue-light);
     margin: 0;
+    padding-left: 30px;
+ 
+    
+}
+#canteen p:nth-child(even){
+  padding: 10x 0 0 15px;
+}
+#canteen p:nth-child(odd){
+ padding: 20px 0 10px 15px;
 }
 
 #canteen p:last-child {
@@ -292,8 +348,7 @@ td {
 }
 
 /* CLOCK */
-.time-date-weather {
-  
+.time-date-weather {  
   padding-top: 4rem;
   padding-top: 4rem;
   max-width: 600px;
@@ -339,7 +394,12 @@ td {
   flex-direction: column;
   align-items: center;
   padding-top: 4rem;
+  /* animation: uglyColor 1s infinite linear; */
   /* background-color: #425462; */
+}
+
+#weather img {
+  animation: svgAnimation 3s infinite linear;
 }
 
 #currentIcon {

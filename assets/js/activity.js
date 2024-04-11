@@ -45,16 +45,16 @@ async function activityPlan() {
       minute: "2-digit",
     });
 
-    // friendly_data.map((word) => {
-    //   if (word.name.toUpperCase() === event.Education.toUpperCase()) {
-    //     event.Education = word.friendly_name;
-    //   }
+    friendly_data.map((word) => {
+      if (word.name.toUpperCase() === event.Education.toUpperCase()) {
+        event.Education = word.friendly_name;
+      }
 
-    //   if (word.name.toUpperCase() === event.Subject.toUpperCase()) {
-    //     event.Subject = word.friendly_name;
-    //   }
-    //   // console.log(event);
-    // });
+      if (word.name.toUpperCase() === event.Subject.toUpperCase()) {
+        event.Subject = word.friendly_name;
+      }
+      // console.log(event);
+    });
 
     event.Stamp = new Date(event.StartDate).getTime();
   });
