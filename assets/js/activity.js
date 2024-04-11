@@ -98,7 +98,7 @@ async function activityPlan() {
   // console.log(curday_events);
 
   // Makes sure that activity calender doesn't show more than 16 items at once /PO
-  curday_events = curday_events.slice(0, 15);
+  curday_events = curday_events.slice(0, 16);
 
   let acc_html = `
         <div id="activity-container">

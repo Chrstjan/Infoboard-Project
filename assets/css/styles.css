@@ -169,7 +169,8 @@ body {
 
 #activityContainer {
   background: var(--grey);
-  height: fit-content;
+  /* height: fit-content; */
+  height: 100vh;
   padding-bottom: 1rem;
 
 }
@@ -179,7 +180,7 @@ body {
     width: 700px;
     grid-row-start: 1;
     grid-row-end: 2;
-    margin: 2rem 2rem 2rem 2rem;
+    margin: 3rem 2rem 2rem 2rem;
     padding: 15px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
