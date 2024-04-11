@@ -79,9 +79,10 @@ function fetchedcanteenData(canteenData) {
 
   let days = canteenData.Days.map((DayName) => DayName.DayName);
   let dish = canteenData.Days.map((Dayname) => Dayname.Dish);
+  
   let prices = canteenData.Days.map((Dayname) => {
     let dishPriceStr = Dayname.Dish;
-    let strRegex = /kr\. (\d+,\d+)/;
+    let strRegex = /kr\.\s(\d+,\d+)/;
     let newPrice = dishPriceStr.match(strRegex);
     if (newPrice) {
       return newPrice[1];
@@ -90,8 +91,17 @@ function fetchedcanteenData(canteenData) {
     }
   });
 
+  let cleanDish = dish.map((dishText) => {
+    // console.log(dishText);
+    let cleanDishText = dishText.replace(/(.+?)\s-\s.*$/, '$1');
+    console.log(cleanDishText);
+    return cleanDishText;
+  });
+
+  console.log(cleanDish);
+
   // createCanteenMenu(days, dishes, prices);
-  createCanteenMenu(days, dish, prices);
+  createCanteenMenu(days, cleanDish, prices);
 }
 
 function createCanteenMenu(days, dish, prices) {
@@ -99,12 +109,16 @@ function createCanteenMenu(days, dish, prices) {
   const today = new Date().getDay(); // Get the current day of the week (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
 
   for (let i = 0; i < days.length; i++) {
+    //Container for weekday and dish price
+    const canteenContainer = document.createElement("div");
+    const foodPriceContainer = document.createElement("div");
+    foodPriceContainer.classList.add("foodDayPriceContainer");
     const foodDay = document.createElement("p");
     foodDay.id = "foodDay";
     const foodDish = document.createElement("p");
     foodDish.id = "foodDish";
-
-    // const foodPrice = document.createElement("p");
+    const foodPrice = document.createElement("span");
+    foodPrice.className = "foodPrice";
 
     // Adjust the index to match the day numbering in your days array
     const dayIndex = today === 0 ? 7 : today; // Adjust Sunday (0) to 7
@@ -118,15 +132,22 @@ function createCanteenMenu(days, dish, prices) {
       foodDish.className = "foodDish";
     }
 
-    const dayTextNode = document.createTextNode(days[i]);
-    const dishTextNode = document.createTextNode(dish[i] + " - " + prices[i]);
-    // const dishPriceTextNode = document.createTextNode(dish[i]);
+    const dayTextNode = document.createTextNode(days[i] + " - kr. " +  prices[i]);
+    const dishTextNode = document.createTextNode(dish[i]);
+    // const priceTextNode = document.createTextNode(prices[i]);
 
     foodDay.appendChild(dayTextNode);
     foodDish.appendChild(dishTextNode);
-    // foodPrice.appendChild(dishPriceTextNode);
+    // foodPrice.appendChild(priceTextNode);
 
-    foodSection.appendChild(foodDay);
+    //Container for weekday and dish price
+    foodPriceContainer.appendChild(foodDay);
+    // foodPriceContainer.appendChild(foodPrice);
+
+    canteenContainer.appendChild(foodPriceContainer);
+    // canteenContainer.appendChild(foodPrice);
+
+    foodSection.appendChild(canteenContainer);
     foodSection.appendChild(foodDish);
     // foodSection.appendChild(foodPrice);
   }

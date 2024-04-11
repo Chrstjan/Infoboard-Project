@@ -37,6 +37,8 @@ async function activityPlan() {
 
   console.log(events_data);
 
+  console.log(friendly_data);
+
   events_data.map((event) => {
     event.Time = new Date(event.StartDate).toLocaleTimeString("en-GB", {
       hour: "2-digit",
@@ -77,7 +79,7 @@ async function activityPlan() {
 
   curday_events.push(
     ...events_data.filter(
-      (elm) => elm.Stamp + 36000000 >= curday_stamp && elm.Stamp < nextday_stamp
+      (elm) => elm.Stamp + 3600000 >= curday_stamp && elm.Stamp < nextday_stamp
     )
   );
 

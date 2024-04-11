@@ -229,10 +229,22 @@ td {
 
 .foodDay {
   font-weight: bold;
+  /* display: inline-block; */
+}
+
+.foodDayPriceContainer {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 
 .foodDish {
   /* color: red; */
+}
+
+.foodPrice {
+    /* display: inline; */
+
 }
 
 .today {
