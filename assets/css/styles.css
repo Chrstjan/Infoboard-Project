@@ -96,7 +96,11 @@ body {
   gap: 1rem;
   width: 600px;
   /* padding-top: 3rem; */
-  margin: 7rem 2rem 2rem 2rem;
+  margin: 1rem 2rem 2rem 2rem;
+}
+
+.busTitle {
+  margin: 4rem 0 0 2rem;
 }
 
 #busplan ul {
@@ -176,11 +180,11 @@ body {
 }
 #activity {
     /* padding: 0 1rem; */
-    background: var(--violet);
+    background: var(--grey);
     width: 700px;
     grid-row-start: 1;
     grid-row-end: 2;
-    margin: 3rem 2rem 2rem 2rem;
+    margin: 2.5rem 2rem 2rem 2rem;
     padding: 15px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -212,20 +216,20 @@ body {
 }
 
 .activity-rooms:nth-child(odd) {
-  background-color: var(--orange);
+  background-color: #283239;
 }
 .activity-rooms:nth-child(even) {
-  background-color: var(--yellow);
+  background-color: #3c4d59;
 }
 
 .activity-rooms h2 {
   font-weight: normal;
   font-size: 22px;
   border-bottom: solid 1px black;
-  /* padding-bottom: 0.2rem; */
+  padding-bottom: 0.5rem;
   /* padding-left: 0.2rem; */
   margin-bottom: 0;
-  height: 2.5rem;
+  height: auto;
 }
 
 .activity-rooms h2:nth-child(1) {
@@ -260,16 +264,19 @@ td {
   /* background-color: lightblue; */
   width: 600px;
   /* padding-bottom: 1rem; */
-  margin: 2rem 2rem 1rem 2rem;
+  margin: 1rem 0 0 2rem;
   background-color: #192b428a;
   width: 600px;
   padding-bottom: 1rem;
-  margin: 4rem 2rem 1rem 2rem;
+  /* margin: 4rem 2rem 0rem 2rem; */
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
- 
+}
+
+.canteenTitle {
+  margin: 4rem 0 0 2rem;
 }
 
 /* 
@@ -346,6 +353,11 @@ td {
 
 .today {
   text-decoration: underline;
+}
+
+.passed {
+  text-decoration: line-through; /* Strike out the text */
+  color: #888; /* Change the color to a muted gray */
 }
 
 /* CLOCK */

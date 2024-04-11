@@ -32,8 +32,8 @@ async function activityPlan() {
   const { result: friendly_data } = await myFetchData(endpoint_friendly);
 
   events_data = events_data.filter((elm) =>
-    config.array_valid_educations.includes(elm.Education)
-  );
+  config.array_valid_educations.includes(elm.Education)
+);
 
   console.log(events_data);
 
@@ -90,9 +90,11 @@ async function activityPlan() {
   if (nextday_events.length) {
     // console.log(nextday_events[0].StartDate);
     const nextday_date = new Date(nextday_events[0].StartDate);
+    const options = { weekday: "long", day: "numeric", month: "long" }; // Define options for formatting the date
+    const formattedDate = nextday_date.toLocaleDateString("da", options);
     //Sorting the activities for the next day away
-    // curday_events.push({ Day: nextday_date });
-    // curday_events.push(...nextday_events);
+    curday_events.push({ Day: formattedDate });
+    curday_events.push(...nextday_events);
   }
 
   // console.log(curday_events);

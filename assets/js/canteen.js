@@ -94,11 +94,11 @@ function fetchedcanteenData(canteenData) {
   let cleanDish = dish.map((dishText) => {
     // console.log(dishText);
     let cleanDishText = dishText.replace(/(.+?)\s-\s.*$/, '$1');
-    console.log(cleanDishText);
+    // console.log(cleanDishText);
     return cleanDishText;
   });
 
-  console.log(cleanDish);
+  // console.log(cleanDish);
 
   // createCanteenMenu(days, dishes, prices);
   createCanteenMenu(days, cleanDish, prices);
@@ -107,6 +107,11 @@ function fetchedcanteenData(canteenData) {
 function createCanteenMenu(days, dish, prices) {
   const foodSection = document.getElementById("canteen");
   const today = new Date().getDay(); // Get the current day of the week (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
+
+  const canteenTitle = document.createElement('h2');
+  canteenTitle.className = 'canteenTitle';
+  canteenTitle.textContent = "Ugens Menu";
+  foodSection.parentNode.insertBefore(canteenTitle, foodSection);
 
   for (let i = 0; i < days.length; i++) {
     //Container for weekday and dish price
@@ -139,6 +144,11 @@ function createCanteenMenu(days, dish, prices) {
     foodDay.appendChild(dayTextNode);
     foodDish.appendChild(dishTextNode);
     // foodPrice.appendChild(priceTextNode);
+
+    if (i < dayIndex - 1) {
+      foodDay.classList.add("passed"); // Add class 'passed' to foodDay
+      foodDish.classList.add("passed"); // Add class 'passed' to foodDish
+    }
 
     //Container for weekday and dish price
     foodPriceContainer.appendChild(foodDay);

@@ -1,5 +1,6 @@
-const app = document.getElementById("app");
+// const app = document.getElementById("app"); // Does this one even do anything? /PO
 const busContainer = document.getElementById("busDeparture");
+
 
 getBusdata();
 
@@ -34,7 +35,7 @@ function busPlan(busdata) {
 
   console.log(sliced_data);
 
-  //Bus view code structure
+  // Bus view code structure
   //   const ul = document.createElement("ul");
   //   const li_name = document.createElement("li");
   //   li_name.innerText = "BUS";
