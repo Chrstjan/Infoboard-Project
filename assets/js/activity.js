@@ -45,16 +45,16 @@ async function activityPlan() {
       minute: "2-digit",
     });
 
-    friendly_data.map((word) => {
-      if (word.name.toUpperCase() === event.Education.toUpperCase()) {
-        event.Education = word.friendly_name;
-      }
+    // friendly_data.map((word) => {
+    //   if (word.name.toUpperCase() === event.Education.toUpperCase()) {
+    //     event.Education = word.friendly_name;
+    //   }
 
-      if (word.name.toUpperCase() === event.Subject.toUpperCase()) {
-        event.Subject = word.friendly_name;
-      }
-      // console.log(event);
-    });
+    //   if (word.name.toUpperCase() === event.Subject.toUpperCase()) {
+    //     event.Subject = word.friendly_name;
+    //   }
+    //   // console.log(event);
+    // });
 
     event.Stamp = new Date(event.StartDate).getTime();
   });
@@ -98,45 +98,46 @@ async function activityPlan() {
   // console.log(curday_events);
 
   // Makes sure that activity calender doesn't show more than 16 items at once /PO
-  curday_events = curday_events.slice(0, 16);
+  curday_events = curday_events.slice(0, 15);
 
   let acc_html = `
-        <table>
-            <tr>
-                <th>Kl.</th>
-                <th>Uddannelse</th>
-                <th>Hold</th>
-                <th>Fag</th>
-                <th>Lokale</th>
-            </tr>`;
+        <div id="activity-container">
+          <div id="activity-info">
+              <h2>Kl.</h2>
+              <h2>Uddannelse</h2>
+              <h2>Hold</h2>
+              <h2>Fag</h2>
+              <h2>Lokale</h2>
+          </div>`;
+            
 
 
 if (curday_events.length === 0) {
   acc_html += `
-    <tr>
-      <td colspan="5">Der er ikke flere aktiviteter at vise for idag.</td>
-    </tr>
+    <header>
+      <h2 class="no-activities" colspan="5">Der er ikke flere aktiviteter at vise for idag.</td>
+    </header>
   `;
 } else {
   curday_events.map((event) => {
     // console.log(event);
     acc_html += event.Day
       ? `
-                <tr>
-                    <td colspan="5">${event.Day}</td>
-                </tr>`
+                <header>
+                    <h2 class="event-day" colspan="5">${event.Day}</td>
+                </header>`
       : `
-            <tr>
-               <td>${event.Time}</td>
-               <td>${event.Education}</td>
-               <td>${event.Team}</td>
-               <td>${event.Subject}</td>
-               <td>${event.Room}</td>
-            </tr>
+            <header class="activity-rooms">
+               <h2>${event.Time}</h2>
+               <h2>${event.Education}</h2>
+               <h2>${event.Team}</h2>
+               <h2>${event.Subject}</h2>
+               <h2>${event.Room}</h2>
+            </header>
             `;
   });}
 
-  acc_html += `</table>`;
+  acc_html += `</div>`;
   const container = document.getElementById("activity");
   container.innerHTML = acc_html;
 

@@ -19,7 +19,7 @@
 
 body {
   /*display: none;  funny haha */
-  overflow: hidden;
+  /* overflow: hidden; */
   margin: 0;
   padding: 0;
   /* margin-top: 8rem; */
@@ -59,8 +59,12 @@ body {
 
 
 #bus-canteen  {
-  background: var(--grey);
-  height: 100vh;  
+  /* background: var(--grey); */
+  /* height: 100vh;   */
+  max-width: 700px;
+  /* max-height: 3000px; */
+  background-image: url('../img/pexels-amine-i̇spir-13413984.jpg');
+  background-size: cover;
 }
 /* BUS PLAN */
 
@@ -85,14 +89,14 @@ body {
 }
 
 #busplan ul:nth-child(1){
-  background-color: var(--blue-light);
+  background-color: var(--green);
 }
 #busplan ul:nth-child(2){
-  background-color: var(--blue);
+  background-color: var(--blue-light);
 }
 
 #busplan ul:nth-child(3){
-  background-color: var(--green);
+  background-color: var(--blue);
 }
 
 #busplan ul:nth-child(4){
@@ -100,7 +104,7 @@ body {
 }
 
 #busplan ul:nth-child(5){
-  background-color: var(--blue-light);
+  background-color: var(--grey);
 }
 
 .bus-line {
@@ -156,7 +160,43 @@ body {
     margin: 2rem 2rem 2rem 2rem;
 }
 
-#activity table {
+#activity-info {
+  display: grid;
+  grid-template-columns: 0.4fr 0.9fr 0.8fr 1fr 0.5fr;
+  border-bottom: solid 1px black;  
+}
+
+#activity-info h2 {
+  font-size: 22px;
+  font-weight: normal;
+  height: 2.5rem;
+}
+
+.activity-rooms {
+  display: grid;
+  grid-template-columns: 0.4fr 0.9fr 0.8fr 1fr 0.5fr;
+}
+
+.activity-rooms h2 {
+  font-weight: normal;
+  font-size: 22px;
+  /* text-align: center; */
+  /* border: solid 1px red; */
+  border-bottom: solid 1px black;
+  /* margin-top: 0.2rem; */
+  /* padding-top: 0.2rem; */
+  padding-bottom: 0.2rem;
+  margin-bottom: 0;
+  height: 2.5rem;
+  /* margin-left: 0.2rem; */
+}
+
+.activity-rooms h2:nth-child(5) {
+  text-align: right;
+  padding-right: 0.5rem;
+}
+
+/* #activity table {
   width: 100%;
   border: solid 1px #000;
   border-spacing: 0px;
@@ -171,7 +211,7 @@ td {
   border: 1px solid #000;
   text-align: center;
   height: 3.5rem;
-}
+} */
 
 
 /* MENU */
@@ -253,12 +293,18 @@ td {
 
 /* CLOCK */
 .time-date-weather {
-  margin: 4.5rem 0 4.5rem 0;
+  
   padding-top: 4rem;
+  padding-top: 4rem;
+  max-width: 600px;
+  height: 100vh;
+  background-image: url('../img/pexels-amine-i̇spir-13413984.jpg');
+  background-size: cover;
 }
 
 
 #timeAndDate {
+  margin: 4.5rem 0 4.5rem 0;
   /* position: absolute;
   top: 0;
   left: 50%;
