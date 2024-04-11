@@ -60,8 +60,7 @@ body {
 
 #bus-canteen  {
   background: var(--grey);
-  height: 100vh;
-  
+  height: 100vh;  
 }
 /* BUS PLAN */
 
@@ -71,8 +70,8 @@ body {
   align-items: center;
   gap: 1rem;
   width: 600px;
-  padding-top: 3rem;
-  margin: 4.5rem 2rem 4.5rem 2rem;
+  /* padding-top: 3rem; */
+  margin: 4rem 2rem 2rem 2rem;
 }
 
 #busplan ul {
@@ -82,7 +81,7 @@ body {
     list-style: none;
     padding: 15px 0;
     margin: 0;
-    border-radius: 10px;
+    border-radius: 30px;
 }
 
 #busplan ul:nth-child(1){
@@ -113,6 +112,7 @@ body {
   margin-left: 1rem;
   font-weight: bold;
   text-align: center;
+  border-radius: 50px;
 }
 
 .line-stop {
@@ -145,7 +145,7 @@ body {
   background: var(--grey);
   height: fit-content;
   padding-bottom: 1rem;
-  height: 100vh;
+
 }
 #activity {
     /* padding: 0 1rem; */
@@ -153,7 +153,7 @@ body {
     width: 700px;
     grid-row-start: 1;
     grid-row-end: 2;
-    margin: 4.5rem 2rem 4.5rem 2rem;
+    margin: 2rem 2rem 2rem 2rem;
 }
 
 #activity table {
@@ -179,7 +179,7 @@ td {
   /* background-color: lightblue; */
   width: 600px;
   /* padding-bottom: 1rem; */
-  margin: 4.5rem 2rem 4.5rem 2rem;
+  margin: 2rem 2rem 1rem 2rem;
  
 }
 

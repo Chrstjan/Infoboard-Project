@@ -77,7 +77,7 @@ async function activityPlan() {
 
   curday_events.push(
     ...events_data.filter(
-      (elm) => elm.Stamp + 360000 >= curday_stamp && elm.Stamp < nextday_stamp
+      (elm) => elm.Stamp + 36000000 >= curday_stamp && elm.Stamp < nextday_stamp
     )
   );
 
