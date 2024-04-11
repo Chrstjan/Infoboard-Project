@@ -79,10 +79,22 @@ function fetchedcanteenData(canteenData) {
 
   let days = canteenData.Days.map((DayName) => DayName.DayName);
   let dish = canteenData.Days.map((Dayname) => Dayname.Dish);
-  createCanteenMenu(days, dish);
+  let prices = canteenData.Days.map((Dayname) => {
+    let dishPriceStr = Dayname.Dish;
+    let strRegex = /kr\. (\d+,\d+)/;
+    let newPrice = dishPriceStr.match(strRegex);
+    if (newPrice) {
+      return newPrice[1];
+    } else {
+      return ""; // Return empty string if no price found
+    }
+  });
+
+  // createCanteenMenu(days, dishes, prices);
+  createCanteenMenu(days, dish, prices);
 }
 
-function createCanteenMenu(days, dish) {
+function createCanteenMenu(days, dish, prices) {
   const foodSection = document.getElementById("canteen");
   const today = new Date().getDay(); // Get the current day of the week (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
 
@@ -91,6 +103,8 @@ function createCanteenMenu(days, dish) {
     foodDay.id = "foodDay";
     const foodDish = document.createElement("p");
     foodDish.id = "foodDish";
+
+    // const foodPrice = document.createElement("p");
 
     // Adjust the index to match the day numbering in your days array
     const dayIndex = today === 0 ? 7 : today; // Adjust Sunday (0) to 7
@@ -105,12 +119,15 @@ function createCanteenMenu(days, dish) {
     }
 
     const dayTextNode = document.createTextNode(days[i]);
-    const dishTextNode = document.createTextNode(dish[i]);
+    const dishTextNode = document.createTextNode(dish[i] + " - " + prices[i]);
+    // const dishPriceTextNode = document.createTextNode(dish[i]);
 
     foodDay.appendChild(dayTextNode);
     foodDish.appendChild(dishTextNode);
+    // foodPrice.appendChild(dishPriceTextNode);
 
     foodSection.appendChild(foodDay);
     foodSection.appendChild(foodDish);
+    // foodSection.appendChild(foodPrice);
   }
 }
