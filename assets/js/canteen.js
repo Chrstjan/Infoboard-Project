@@ -112,7 +112,7 @@ function createCanteenMenu(days, dish, prices) {
     //Container for weekday and dish price
     const canteenContainer = document.createElement("div");
     const foodPriceContainer = document.createElement("div");
-    foodPriceContainer.classList.add("foodDayPriceContainer");
+    // foodPriceContainer.classList.add("foodDayPriceContainer");
     const foodDay = document.createElement("p");
     foodDay.id = "foodDay";
     const foodDish = document.createElement("p");
@@ -144,10 +144,10 @@ function createCanteenMenu(days, dish, prices) {
     foodPriceContainer.appendChild(foodDay);
     // foodPriceContainer.appendChild(foodPrice);
 
-    canteenContainer.appendChild(foodPriceContainer);
+    // canteenContainer.appendChild(foodPriceContainer);
     // canteenContainer.appendChild(foodPrice);
 
-    foodSection.appendChild(canteenContainer);
+    foodSection.appendChild(foodDay);
     foodSection.appendChild(foodDish);
     // foodSection.appendChild(foodPrice);
   }
