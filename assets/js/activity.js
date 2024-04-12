@@ -9,7 +9,6 @@ async function myFetchData(endpoint) {
 
   try {
     response = await fetch(endpoint);
-    // console.log(response);
     if (response.ok) {
       const json = await response.json();
       return json;

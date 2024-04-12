@@ -1,6 +1,5 @@
-* {
-  /* box-sizing: border-box; */
-}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 :root {
   --dark-grey: #283239;
   --grey: #3c4d59;
@@ -58,7 +57,7 @@ body {
   margin: 0;
   padding: 0;
   /* margin-top: 8rem; */
-  font-family: Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   background-color: var(--dark-grey); /* Dark background color */
   /* Funny page spin */
   /* animation: spin 2.5s infinite linear; */
@@ -122,7 +121,10 @@ body {
 }
 
 .busTitle {
-  margin: 4rem 0 0 2rem;
+  margin: 3rem 0 0 0;
+  text-align: center;
+  text-transform: uppercase;
+  /* background-color: #17192198; */
 }
 
 #busplan ul {
@@ -132,22 +134,24 @@ body {
   list-style: none;
   padding: 10px 15px 10px 0;
   margin: 0;
-  border-radius: 30px;
+  /* border-radius: 30px; */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 #busplan ul:nth-child(1) {
-  background-color: var(--green);
+  background-color: #5e9beb;
 }
 #busplan ul:nth-child(2) {
-  background-color: var(--blue-light);
+  background-color: #4dc1e8;
 }
 
 #busplan ul:nth-child(3) {
-  background-color: var(--blue);
+  background-color: #3dc09f;
 }
 
 #busplan ul:nth-child(4) {
-  background-color: var(--green-grey);
+  background-color: #84ab99;
 }
 
 #busplan ul:nth-child(5) {
@@ -178,7 +182,7 @@ body {
 }
 
 #busplan ul .delayed-bus {
-  color: red;
+  color: rgb(180, 0, 0);
   display: flex;
   justify-content: center;
   /* text-align: right; */
@@ -193,14 +197,15 @@ body {
 /*Activity  */
 
 #activityContainer {
-  background: var(--grey);
+  /* background: var(--grey); */
+  background-color: #272b38;
   /* height: fit-content; */
   height: 100vh;
   padding-bottom: 1rem;
 }
 #activity {
   /* padding: 0 1rem; */
-  background: var(--grey);
+  /* background: var(--dark-grey); */
   width: 700px;
   grid-row-start: 1;
   grid-row-end: 2;
@@ -236,22 +241,38 @@ body {
 }
 
 .activity-rooms.Webudvikler {
-  background-color: a80009;
+  background-image: linear-gradient(to bottom right, #db3644, #97127c);
+  /* background-color: #a80009; */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  /* border-top-right-radius: 20px; */
+  /* border-top-left-radius: 20px; */
   margin-bottom: 0.7rem;
 }
 
 .activity-rooms.MedieGrafiker {
-  background-color: #9b109b;
+  background-image: linear-gradient(to bottom right, #9b109b, #6d1297);
+  /* background-color: #9b109b; */
   margin-bottom: 0.7rem;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  /* border-top-right-radius: 20px; */
 }
 
 .activity-rooms.GrafiskTekniker {
-  background-color: #2a54d3;
+  background-image: linear-gradient(to bottom right, #46b0f2, #264d94);
+  background-color: #23addb;
   margin-bottom: 0.7rem;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  /* border-top-right-radius: 20px; */
 }
 
 .activity-rooms.AmuUddanelse {
+  background-image: linear-gradient(to bottom right, #ebbc4d, #f99d16);
   background-color: #ebae4d;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   margin-bottom: 0.7rem;
 }
 
@@ -306,7 +327,7 @@ td {
   width: 600px;
   /* padding-bottom: 1rem; */
   margin: 1rem 0 0 2rem;
-  background-color: #192b428a;
+  background-color: #070c13c4;
   width: 600px;
   padding-bottom: 1rem;
   /* margin: 4rem 2rem 0rem 2rem; */
@@ -317,7 +338,9 @@ td {
 }
 
 .canteenTitle {
-  margin: 4rem 0 0 2rem;
+  margin: 4rem 0 0 0;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 /* 
@@ -357,10 +380,10 @@ td {
   /* margin: 1rem; */
   font-size: 22px;
   margin: 0;
-  padding-left: 30px;
+  /* padding-left: 30px; */
 }
 #canteen p:nth-child(even) {
-  padding: 10x 0 0 15px;
+  padding: 5px 0 0 15px;
 }
 #canteen p:nth-child(odd) {
   padding: 20px 0 10px 15px;
@@ -372,6 +395,11 @@ td {
 
 .foodDay {
   font-weight: bold;
+  padding-left: 30px;
+}
+
+.foodDay::first-letter {
+  text-transform: capitalize;
   /* display: inline-block; */
 }
 

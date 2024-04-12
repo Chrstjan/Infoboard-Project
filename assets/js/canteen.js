@@ -1,5 +1,5 @@
 fetchCanteenMenu();
-// fetchedcanteenData(); //Used for testing outside of the schools network
+// fetchedcanteenData(); //Only Used for testing outside of the schools network
 defineStorage();
 function fetchCanteenMenu() {
   const canteenAPI =
@@ -13,10 +13,6 @@ function fetchCanteenMenu() {
       return res.json();
     })
     .then((canteenData) => {
-      // buildCanteenMenu(canteenData);
-
-      // console.log(canteenData.Days)
-      // console.log(canteenData.Days.DayName)
       fetchedcanteenData(canteenData);
       // Schedule the next fetch after 24 hours
       setTimeout(fetchCanteenMenu, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
@@ -79,7 +75,7 @@ function fetchedcanteenData(canteenData) {
 
   let days = canteenData.Days.map((DayName) => DayName.DayName);
   let dish = canteenData.Days.map((Dayname) => Dayname.Dish);
-  
+
   let prices = canteenData.Days.map((Dayname) => {
     let dishPriceStr = Dayname.Dish;
     let strRegex = /kr\.\s(\d+,\d+)/;
@@ -92,15 +88,10 @@ function fetchedcanteenData(canteenData) {
   });
 
   let cleanDish = dish.map((dishText) => {
-    // console.log(dishText);
-    let cleanDishText = dishText.replace(/(.+?)\s-\s.*$/, '$1');
-    // console.log(cleanDishText);
+    let cleanDishText = dishText.replace(/(.+?)\s-\s.*$/, "$1");
     return cleanDishText;
   });
 
-  // console.log(cleanDish);
-
-  // createCanteenMenu(days, dishes, prices);
   createCanteenMenu(days, cleanDish, prices);
 }
 
@@ -108,16 +99,14 @@ function createCanteenMenu(days, dish, prices) {
   const foodSection = document.getElementById("canteen");
   const today = new Date().getDay(); // Get the current day of the week (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
 
-  const canteenTitle = document.createElement('h2');
-  canteenTitle.className = 'canteenTitle';
+  const canteenTitle = document.createElement("h2");
+  canteenTitle.className = "canteenTitle";
   canteenTitle.textContent = "Ugens Menu";
   foodSection.parentNode.insertBefore(canteenTitle, foodSection);
 
   for (let i = 0; i < days.length; i++) {
     //Container for weekday and dish price
-    const canteenContainer = document.createElement("div");
     const foodPriceContainer = document.createElement("div");
-    // foodPriceContainer.classList.add("foodDayPriceContainer");
     const foodDay = document.createElement("p");
     foodDay.id = "foodDay";
     const foodDish = document.createElement("p");
@@ -131,19 +120,18 @@ function createCanteenMenu(days, dish, prices) {
     // Apply a specific class to underline today's food
     if (i === dayIndex - 1) {
       foodDay.className = "foodDay today"; // Add class 'today' to foodDay
-      // foodDish.className = 'foodDish today'; // Add class 'today' to foodDish
     } else {
       foodDay.className = "foodDay";
       foodDish.className = "foodDish";
     }
 
-    const dayTextNode = document.createTextNode(days[i] + " - kr. " +  prices[i]);
+    const dayTextNode = document.createTextNode(
+      days[i] + " - kr. " + prices[i]
+    );
     const dishTextNode = document.createTextNode(dish[i]);
-    // const priceTextNode = document.createTextNode(prices[i]);
 
     foodDay.appendChild(dayTextNode);
     foodDish.appendChild(dishTextNode);
-    // foodPrice.appendChild(priceTextNode);
 
     if (i < dayIndex - 1) {
       foodDay.classList.add("passed"); // Add class 'passed' to foodDay
@@ -152,13 +140,8 @@ function createCanteenMenu(days, dish, prices) {
 
     //Container for weekday and dish price
     foodPriceContainer.appendChild(foodDay);
-    // foodPriceContainer.appendChild(foodPrice);
-
-    // canteenContainer.appendChild(foodPriceContainer);
-    // canteenContainer.appendChild(foodPrice);
 
     foodSection.appendChild(foodDay);
     foodSection.appendChild(foodDish);
-    // foodSection.appendChild(foodPrice);
   }
 }
