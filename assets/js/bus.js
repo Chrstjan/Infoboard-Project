@@ -7,7 +7,6 @@ const busContainer = document.getElementById("busDeparture");
 // title.className = 'busTitle'
 // busTitleElm.appendChild(title);
 
-
 getBusdata();
 
 setInterval(getBusdata, 60000);
@@ -37,8 +36,6 @@ function busPlan(busdata) {
   const container = document.getElementById("busplan");
 
   const sliced_data = busdata.MultiDepartureBoard.Departure.slice(0, 5);
-
-
 
   console.log(sliced_data);
 
@@ -79,29 +76,28 @@ function busPlan(busdata) {
       if (value.rtTime) {
         li_time.innerText = calcRemainingTime(`${value.date} ${value.rtTime}`);
         li_time.classList.add("delayed-bus");
-      }
-      else {
+      } else {
         li_time.innerText = calcRemainingTime(`${value.date} ${value.time}`);
         li_time.classList.add("bus-departure");
       }
-    //   if (value.rtTime) {
-    //     const remainingTime = calcRemainingTime(`${value.date} ${value.rtTime}`);
-    //     if (remainingTime > 0) {
-    //         li_time.innerText = remainingTime;
-    //         li_time.classList.add("delayed-bus");
-    //     } else {
-    //         li_time.innerText = "";
-    //     }
-    // } else {
-    //     li_time.innerText = calcRemainingTime(`${value.date} ${value.time}`);
-    // }
+      //   if (value.rtTime) {
+      //     const remainingTime = calcRemainingTime(`${value.date} ${value.rtTime}`);
+      //     if (remainingTime > 0) {
+      //         li_time.innerText = remainingTime;
+      //         li_time.classList.add("delayed-bus");
+      //     } else {
+      //         li_time.innerText = "";
+      //     }
+      // } else {
+      //     li_time.innerText = calcRemainingTime(`${value.date} ${value.time}`);
+      // }
 
       ul.append(li_name, li_stop, li_time);
       container.append(ul);
     });
   }
 
-  setTimeout(() => busPlan(busdata), 30000);
+  // setTimeout(() => busPlan(busdata), 30000);
 }
 
 const calcRemainingTime = (departure_time) => {
