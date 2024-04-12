@@ -356,7 +356,7 @@ td {
 }
 
 .passed {
-  text-decoration: line-through; /* Strike out the text */
+  /* text-decoration: line-through; Strike out the text */
   color: #888; /* Change the color to a muted gray */
 }
 

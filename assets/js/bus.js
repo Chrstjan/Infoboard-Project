@@ -1,5 +1,11 @@
 // const app = document.getElementById("app"); // Does this one even do anything? /PO
 const busContainer = document.getElementById("busDeparture");
+// const busTitleElm = document.getElementById('busPlan')
+
+// const title = document.createElement("h2");
+// title.textContent = "Bustider";
+// title.className = 'busTitle'
+// busTitleElm.appendChild(title);
 
 
 getBusdata();
@@ -29,9 +35,10 @@ function getBusdata() {
 function busPlan(busdata) {
   // console.log(busdata);
   const container = document.getElementById("busplan");
-  container.innerHTML = "";
 
   const sliced_data = busdata.MultiDepartureBoard.Departure.slice(0, 5);
+
+
 
   console.log(sliced_data);
 
@@ -50,6 +57,7 @@ function busPlan(busdata) {
 
   if (sliced_data.length) {
     container.innerHTML = "";
+
     sliced_data.map((value, index) => {
       const ul = document.createElement("ul");
       // ul.className =
