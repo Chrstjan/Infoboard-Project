@@ -1,0 +1,376 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/*#region animations  */
+/* Weather Animation */
+@keyframes svgAnimation {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(13px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Funny haha's */
+@keyframes spin {
+  0% {
+    rotate: 360deg;
+  }
+}
+
+@keyframes uglyColor {
+  0% {
+    color: yellow;
+  }
+  10% {
+    color: green;
+  }
+  10% {
+    color: blue;
+  }
+  100% {
+    color: purple;
+  }
+}
+
+/*#endregion animations  */
+
+:root {
+  --dark-grey: #283239;
+  --grey: #3c4d59;
+
+  --green-grey: #97beac;
+  --green: #48cfae;
+  --blue-light: #4dc1e8;
+  --blue: #5e9beb;
+  --purple: #ac92ed;
+
+  --yellow: #f6bc59;
+  --orange: #f37950;
+  --red: #fa425a;
+  --violet: #813563;
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", Arial, sans-serif;
+  background-color: var(--dark-grey); /* Dark background color */
+  /* Funny page spin */
+  /* animation: spin 2.5s infinite linear; */
+  color: #fff; /* Text color */
+}
+
+#container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 50px;
+}
+
+#activityContainer {
+  grid-area: 1 / 1 / 3 / 2;
+}
+#canteen {
+  grid-area: 1 / 3 / 2 / 4;
+}
+#busplan {
+  grid-area: 2 / 3 / 3 / 4;
+}
+.time-date-weather {
+  grid-area: 1 / 2 / 3 / 3;
+}
+
+/*#region activity */
+
+#activityContainer {
+  background-color: #272b38;
+  height: 100vh;
+  padding-bottom: 1rem;
+}
+#activity {
+  width: 700px;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  margin: 2.5rem 2rem 2rem 2rem;
+  padding: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#activity-info {
+  display: grid;
+  grid-template-columns: 0.4fr 0.9fr 0.8fr 1fr 0.5fr;
+  margin-top: 1rem;
+  margin-bottom: 0.7rem;
+}
+
+#activity-info h2 {
+  font-size: 22px;
+  font-weight: normal;
+  height: auto;
+  margin: 0;
+}
+
+#activity-info h2:nth-child(1) {
+  padding-left: 0.5rem;
+}
+
+.activity-rooms {
+  display: grid;
+  grid-template-columns: 0.4fr 0.9fr 0.8fr 1fr 0.5fr;
+}
+
+.activity-rooms.Webudvikler {
+  background-image: linear-gradient(to bottom right, #db3644, #97127c);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-bottom: 0.7rem;
+}
+
+.activity-rooms.MedieGrafiker {
+  background-image: linear-gradient(to bottom right, #9b109b, #6d1297);
+  margin-bottom: 0.7rem;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.activity-rooms.GrafiskTekniker {
+  background-image: linear-gradient(to bottom right, #46b0f2, #264d94);
+  background-color: #23addb;
+  margin-bottom: 0.7rem;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.activity-rooms.AmuUddanelse {
+  background-image: linear-gradient(to bottom right, #ebbc4d, #f99d16);
+  background-color: #ebae4d;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-bottom: 0.7rem;
+}
+
+.activity-rooms h2 {
+  font-weight: normal;
+  font-size: 22px;
+  padding: 8px;
+  margin: 0;
+  height: auto;
+}
+
+.activity-rooms h2:nth-child(1) {
+  padding-left: 0.5rem;
+}
+
+.activity-rooms h2:nth-child(4) {
+  overflow: hidden;
+}
+
+/*#endregion activity */
+
+/*#region time & weather  */
+
+/*#region CLOCK */
+.time-date-weather {
+  padding-top: 4rem;
+  padding-top: 4rem;
+  max-width: 600px;
+  height: 100vh;
+  background-image: url("../img/pexels-amine-i̇spir-13413984.jpg");
+  background-size: cover;
+}
+
+#timeAndDate {
+  margin: 4.5rem 0 4.5rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#currentTime {
+  font-size: 15vh; /* Adjust font size as needed */
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 24px;
+}
+
+#currentDate {
+  font-size: 1.3rem;
+}
+/*#endregion CLOCK */
+
+/*#region WEATHER */
+#weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4rem;
+}
+
+#weather img {
+  animation: svgAnimation 3s infinite linear;
+}
+
+#currentIcon {
+  margin-top: 1rem;
+  width: 200px;
+  filter: invert(100%);
+}
+
+#currentWeather {
+  font-size: 4rem;
+}
+/*#endregion WEATHER */
+
+/*#endregion time & weather  */
+
+/*#region bus & canteen  */
+#bus-canteen {
+  height: 100vh;
+  max-width: 700px;
+  max-height: 3000px;
+  background-image: url("../img/pexels-amine-ispir-13413984.jpg");
+  background-size: cover;
+}
+
+/*#region BUS PLAN */
+#busplan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 600px;
+  margin: 1rem 2rem 2rem 2rem;
+}
+
+.busTitle {
+  margin: 3rem 0 0 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#busplan ul {
+  display: grid;
+  grid-template-columns: 0.2fr 1.5fr 0.3fr;
+  width: 100%;
+  list-style: none;
+  padding: 10px 15px 10px 0;
+  margin: 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+#busplan ul:nth-child(1) {
+  background-color: #5e9beb;
+}
+#busplan ul:nth-child(2) {
+  background-color: #4dc1e8;
+}
+
+#busplan ul:nth-child(3) {
+  background-color: #3dc09f;
+}
+
+#busplan ul:nth-child(4) {
+  background-color: #84ab99;
+}
+
+#busplan ul:nth-child(5) {
+  background-color: var(--grey);
+}
+
+.bus-line {
+  background-color: #150c272c;
+  margin: 0;
+  margin-left: 1rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.line-stop {
+  padding-left: 1.5rem;
+}
+
+.bus-departure {
+  display: flex;
+  justify-content: center;
+}
+
+#busplan ul .delayed-bus {
+  color: rgb(180, 0, 0);
+  display: flex;
+  justify-content: center;
+}
+
+#busplan ul li {
+  font-size: 23px;
+  padding: 7px;
+}
+
+/*#endregion BUS PLAN */
+
+/*#region MENU */
+#canteen {
+  width: 600px;
+  margin: 1rem 0 0 2rem;
+  background-color: #070c13c4;
+  width: 600px;
+  padding-bottom: 1rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.canteenTitle {
+  margin: 4rem 0 0 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#canteen p {
+  font-size: 22px;
+  margin: 0;
+}
+#canteen p:nth-child(even) {
+  padding: 5px 0 0 15px;
+}
+#canteen p:nth-child(odd) {
+  padding: 20px 0 10px 15px;
+}
+
+#canteen p:last-child {
+  margin: 0; /* Does nothing? PO */
+}
+
+.foodDay {
+  font-weight: bold;
+  padding-left: 30px;
+}
+
+.foodDay::first-letter {
+  text-transform: capitalize;
+}
+
+.today {
+  text-decoration: underline;
+}
+
+.passed {
+  /* text-decoration: line-through; Strike out the text */
+  color: #888; /* Change the color to a muted gray */
+}
+
+/*#endregion MENU */
+
+/*#endregion bus & canteen  */

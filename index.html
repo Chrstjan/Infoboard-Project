@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infoboard-Project</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script src="./assets/js/time.js" defer></script>
+    <script src="./assets/js/bus.js" defer></script>
+    <script src="./assets/js/weather.js" defer></script>
+    <script src="./assets/js/activity.js" defer></script>
+    <script src="./assets/js/canteen.js" defer></script>
+</head>
+<body>
+  <div id="container">
+      <div id="activityContainer">
+        <div id="activity"></div>
+      </div>
+
+      <div class="time-date-weather">
+        <div id="timeAndDate">
+          <p id="currentTime"></p>
+          <p id="currentDate"></p>
+        </div>
+        <div id="weather">
+          <div id="currentWeather"></div>
+          <img id="currentIcon"></img>
+        </div>
+      </div>
+
+      <div id="bus-canteen">
+        <div id="canteen"></div>
+        <h2 class="busTitle">Bustider</h2>
+        <div id="busplan"></div>
+      </div>
+  </div>
+</body>
+</html>
