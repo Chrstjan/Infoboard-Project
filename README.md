@@ -1,2 +1,3 @@
 # Infoboard-Project
-HF 2 Infotavle
+HF 1 Infotavle
+Page: https://chrstjan.github.io/Infoboard-Project/
