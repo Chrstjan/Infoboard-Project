@@ -26,7 +26,7 @@ async function activityPlan() {
   );
 
   const endpoint =
-    "https://iws.itcn.dk/techcollege/schedules?departmentcode=smed"; //Change the endpoint variable to the desired endpoint
+    "https://iws.itcn.dk/techcollege/schedules?departmentcode=smed";
   let { value: events_data } = await myFetchData(endpoint);
 
   const endpoint_friendly = "https://api.mediehuset.net/infoboard/subjects";
@@ -50,7 +50,7 @@ async function activityPlan() {
         classList = "Webudvikler";
         break;
       case mainString.includes("mg"):
-        // console.log("MedieGrafiker");
+        // console.log("Medie Grafiker");
         classList = "MedieGrafiker";
         break;
       case mainString.includes("gr"):
@@ -58,7 +58,7 @@ async function activityPlan() {
         classList = "GrafiskTekniker";
         break;
       case mainString.includes("gm"):
-        // console.log("AmuUddanelse");
+        // console.log("Amu Uddanelse");
         classList = "AmuUddanelse";
         break;
       default:
@@ -85,7 +85,6 @@ async function activityPlan() {
       if (word.name.toUpperCase() === event.Subject.toUpperCase()) {
         event.Subject = word.friendly_name;
       }
-      // console.log(event);
     });
 
     event.Stamp = new Date(event.StartDate).getTime();
@@ -120,16 +119,12 @@ async function activityPlan() {
   );
 
   if (nextday_events.length) {
-    // console.log(nextday_events[0].StartDate);
     const nextday_date = new Date(nextday_events[0].StartDate);
     const options = { weekday: "long", day: "numeric", month: "long" }; // Define options for formatting the date
     const formattedDate = nextday_date.toLocaleDateString("da", options);
-    //Sorting the activities for the next day away
     curday_events.push({ Day: formattedDate });
     curday_events.push(...nextday_events);
   }
-
-  // console.log(curday_events);
 
   // Makes sure that activity calender doesn't show more than 16 items at once /PO
   curday_events = curday_events.slice(0, 16);
@@ -152,7 +147,6 @@ async function activityPlan() {
   `;
   } else {
     curday_events.map((event) => {
-      // console.log(event);
       acc_html += event.Day
         ? `
                 <header>
@@ -173,6 +167,4 @@ async function activityPlan() {
   acc_html += `</div>`;
   const container = document.getElementById("activity");
   container.innerHTML = acc_html;
-
-  // console.log(events_data);
 }

@@ -59,7 +59,7 @@ function displayIcon(myIcon) {
     "10d": "rain.svg",
     "11d": "thunderstorm.svg",
     "13d": "snow.svg",
-    "50d": "fog.svg"
+    "50d": "fog.svg",
     // "50d": "light_rain.svg"
   };
 
@@ -74,51 +74,4 @@ function displayIcon(myIcon) {
   } else {
     console.error("Weather icon not found");
   }
-
-
-
-
-
-
-
-
-  // if (myCurrentIcon === undefined) {
-  //   console.log("The value is undefined");
-  // } else if (myCurrentIcon === null) {
-  //   console.log("The value is null");
-  // } else {
-  //   console.log("The value is neither undefined nor null");
-  // }
 }
-
-//   const iconPath = `./assets/img/${iconFileName}.svg`;
-//   myCurrentIcon.setAttribute('src', iconPath);
-// }
-
-//   const weatherType = weatherData.weather[0].icon;
-//   return weatherIconsList[weatherType];
-// }
-
-// const data = getWeatherData();
-// const weatherIcons = createWeatherIcons(data);
-// console.log(weatherIcons);
-// displayIcon(weatherIcons);
-
-// if (data.weather[0].main === 'Clouds') {
-//   weather_icon.src = 'assets/img/cloudy.svg'
-// }
-
-// navigator.geolocation.getCurrentPosition((position) => {
-//     const lat = position.coords.latitude;
-//     const long = position.coords.longitude;
-//     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Aalborg&appid=4d58d6f0a435bf7c5a52e2030f17682d&units=metric`;
-
-//     fetch(apiUrl)
-//       .then(response => response.json())
-//       .then(data => {
-//         const temp = data.main.temp;
-//         console.log(`Current temperature is ${temp} degrees Celsius at latitude ${lat} and longitude ${long}.`);
-//       })
-//       .catch(error => console.log(error));
-
-//   });
