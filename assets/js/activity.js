@@ -9,7 +9,6 @@ async function myFetchData(endpoint) {
 
   try {
     response = await fetch(endpoint);
-    // console.log(response);
     if (response.ok) {
       const json = await response.json();
       return json;
@@ -22,10 +21,12 @@ async function myFetchData(endpoint) {
 activityPlan();
 
 async function activityPlan() {
-  const config = await myFetchData("https://chrstjan.github.io/Infoboard-Project/assets/js/config.json");
+  const config = await myFetchData(
+    "https://chrstjan.github.io/Infoboard-Project/assets/js/config.json"
+  );
 
   const endpoint =
-    "https://iws.itcn.dk/techcollege/schedules?departmentcode=smed"; //Change the endpoint variable to the desired endpoint
+    "https://iws.itcn.dk/techcollege/schedules?departmentcode=smed";
   let { value: events_data } = await myFetchData(endpoint);
 
   const endpoint_friendly = "https://api.mediehuset.net/infoboard/subjects";
@@ -36,6 +37,39 @@ async function activityPlan() {
   );
 
   console.log(events_data);
+
+  events_data.map((eventData) => {
+    let mainString = eventData.Team;
+    let classList = "";
+    console.log(eventData.Team);
+
+    //Adding different classes to the each educations
+    switch (true) {
+      case mainString.includes("we"):
+        // console.log("Webudvikler");
+        classList = "Webudvikler";
+        break;
+      case mainString.includes("mg"):
+        // console.log("Medie Grafiker");
+        classList = "MedieGrafiker";
+        break;
+      case mainString.includes("gr"):
+        // console.log("Grafisk Tekniker");
+        classList = "GrafiskTekniker";
+        break;
+      case mainString.includes("gm"):
+        // console.log("Amu Uddanelse");
+        classList = "AmuUddanelse";
+        break;
+      default:
+        // Default case if none of the conditions are met
+        break;
+    }
+
+    eventData.classList = classList;
+  });
+
+  console.log(friendly_data);
 
   events_data.map((event) => {
     event.Time = new Date(event.StartDate).toLocaleTimeString("en-GB", {
@@ -51,7 +85,6 @@ async function activityPlan() {
       if (word.name.toUpperCase() === event.Subject.toUpperCase()) {
         event.Subject = word.friendly_name;
       }
-      // console.log(event);
     });
 
     event.Stamp = new Date(event.StartDate).getTime();
@@ -77,7 +110,7 @@ async function activityPlan() {
 
   curday_events.push(
     ...events_data.filter(
-      (elm) => elm.Stamp + 360000 >= curday_stamp && elm.Stamp < nextday_stamp
+      (elm) => elm.Stamp + 3600000 >= curday_stamp && elm.Stamp < nextday_stamp
     )
   );
 
@@ -86,49 +119,52 @@ async function activityPlan() {
   );
 
   if (nextday_events.length) {
-    // console.log(nextday_events[0].StartDate);
     const nextday_date = new Date(nextday_events[0].StartDate);
-    //Sorting the activities for the next day away
-    // curday_events.push({ Day: nextday_date });
-    // curday_events.push(...nextday_events);
+    const options = { weekday: "long", day: "numeric", month: "long" }; // Define options for formatting the date
+    const formattedDate = nextday_date.toLocaleDateString("da", options);
+    curday_events.push({ Day: formattedDate });
+    curday_events.push(...nextday_events);
   }
-
-  // console.log(curday_events);
 
   // Makes sure that activity calender doesn't show more than 16 items at once /PO
   curday_events = curday_events.slice(0, 16);
 
   let acc_html = `
-        <table>
-            <tr>
-                <th>Kl.</th>
-                <th>Uddannelse</th>
-                <th>Hold</th>
-                <th>Fag</th>
-                <th>Lokale</th>
-            </tr>`;
+        <div id="activity-container">
+          <div id="activity-info">
+              <h2>Kl.</h2>
+              <h2>Uddannelse</h2>
+              <h2>Hold</h2>
+              <h2>Fag</h2>
+              <h2>Lokale</h2>
+          </div>`;
 
-  curday_events.map((event) => {
-    // console.log(event);
-    acc_html += event.Day
-      ? `
-                <tr>
-                    <td colspan="5">${event.Day}</td>
-                </tr>`
-      : `
-            <tr>
-               <td>${event.Time}</td>
-               <td>${event.Education}</td>
-               <td>${event.Team}</td>
-               <td>${event.Subject}</td>
-               <td>${event.Room}</td>
-            </tr>
+  if (curday_events.length === 0) {
+    acc_html += `
+    <header>
+      <h2 class="no-activities" colspan="5">Der er ikke flere aktiviteter at vise for idag.</td>
+    </header>
+  `;
+  } else {
+    curday_events.map((event) => {
+      acc_html += event.Day
+        ? `
+                <header>
+                    <h2 class="event-day" colspan="5">${event.Day}</td>
+                </header>`
+        : `
+            <header class="activity-rooms ${event.classList}">
+               <h2>${event.Time}</h2>
+               <h2>${event.Education}</h2>
+               <h2>${event.Team}</h2>
+               <h2>${event.Subject}</h2>
+               <h2>${event.Room}</h2>
+            </header>
             `;
-  });
+    });
+  }
 
-  acc_html += `</table>`;
+  acc_html += `</div>`;
   const container = document.getElementById("activity");
   container.innerHTML = acc_html;
-
-  // console.log(events_data);
 }

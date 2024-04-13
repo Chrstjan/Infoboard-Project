@@ -1,4 +1,3 @@
-const app = document.getElementById("app");
 const busContainer = document.getElementById("busDeparture");
 
 getBusdata();
@@ -16,7 +15,6 @@ function getBusdata() {
       return res.json();
     })
     .then((json) => {
-      // console.log(json);
       busPlan(json);
       console.log(json);
     })
@@ -26,32 +24,17 @@ function getBusdata() {
 }
 
 function busPlan(busdata) {
-  // console.log(busdata);
   const container = document.getElementById("busplan");
-  container.innerHTML = "";
 
   const sliced_data = busdata.MultiDepartureBoard.Departure.slice(0, 5);
 
   console.log(sliced_data);
 
-  //Bus view code structure
-  //   const ul = document.createElement("ul");
-  //   const li_name = document.createElement("li");
-  //   li_name.innerText = "BUS";
-  //   const li_line = document.createElement("li");
-  //   li_line.innerText = "FRA";
-  //   const li_direction = document.createElement("li");
-  //   li_direction.innerText = "TIL";
-  //   const li_time = document.createElement("li");
-  //   li_time.innerText = "AFGANG";
-  //   ul.append(li_name, li_line, li_direction, li_time);
-  //   container.append(ul);
-
   if (sliced_data.length) {
     container.innerHTML = "";
+
     sliced_data.map((value, index) => {
       const ul = document.createElement("ul");
-      // ul.className = 
       const li_name = document.createElement("li");
       li_name.classList.add("bus-line");
       li_name.innerText = value.line;
@@ -70,30 +53,17 @@ function busPlan(busdata) {
       if (value.rtTime) {
         li_time.innerText = calcRemainingTime(`${value.date} ${value.rtTime}`);
         li_time.classList.add("delayed-bus");
-      }
-      else {
+      } else {
         li_time.innerText = calcRemainingTime(`${value.date} ${value.time}`);
         li_time.classList.add("bus-departure");
       }
-    //   if (value.rtTime) {
-    //     const remainingTime = calcRemainingTime(`${value.date} ${value.rtTime}`);
-    //     if (remainingTime > 0) {
-    //         li_time.innerText = remainingTime;
-    //         li_time.classList.add("delayed-bus");
-    //     } else {
-    //         li_time.innerText = "";
-    //     }
-    // } else {
-    //     li_time.innerText = calcRemainingTime(`${value.date} ${value.time}`);
-    // }
-      
 
       ul.append(li_name, li_stop, li_time);
       container.append(ul);
     });
   }
 
-  setTimeout(() => busPlan(busdata), 30000);
+  // setTimeout(() => busPlan(busdata), 30000); // DO NOT RUN THIS! This ruined our code 😡😡
 }
 
 const calcRemainingTime = (departure_time) => {
